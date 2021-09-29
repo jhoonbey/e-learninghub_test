@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_AccountLayout";
+}
+
+<div class="container">
+    <article class="content">
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="content-block bottom-padding frame-shadow-lifted" style="    height: 250px;">
+                    @if (ViewBag.Message != null)
+                    {
+                        <p class="lead">@Lang.ResetLinkSentPageInfoPart1 <b>@ViewBag.Message</b> @Lang.ResetLinkSentPageInfoPart2 </p>
+                        <p class="lead">@Lang.ResetLinkSentPageInfoPart3</p>
+                        <p class="lead">@Lang.ResetLinkSentPageInfoPart4</p>
+                    }
+                    else
+                    {
+                        <p class="lead">Error on mail resetting. Please, try again</p>
+                    }
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+            </div>
+        </div>
+    </article>
+</div>
+

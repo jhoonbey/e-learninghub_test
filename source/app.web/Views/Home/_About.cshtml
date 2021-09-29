@@ -1,0 +1,44 @@
+﻿@model HomeViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="content col-sm-12 col-md-12">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 bottom-padding">
+                    <div class="title-box">
+                        <h1 class="title">@Lang.AboutUsText</h1>
+                    </div>
+                    @if (Model.AboutInfo != null)
+                    {
+                        @Html.Raw(((Option)Model.AboutInfo).GetName(Lang.CurrentLanguage))
+                    }
+                </div>
+                <div class="col-sm-12 col-md-6 bottom-padding">
+                    <div class="title-box">
+                        <h2 class="title">@Lang.OurSkillsText</h2>
+                    </div>
+                    @if (Model.Skills_Description != null)
+                    {
+                        @Html.Raw(((Option)Model.Skills_Description).GetName(Lang.CurrentLanguage))
+                    }
+
+                    @if (Model.Skills != null)
+                    {
+                        int k = 0;
+                        string[] classes = new string[] { "danger", "info", "success", "warning", "striped" };
+                        foreach (var item in ((List<Skill>)Model.Skills))
+                        {
+                            k++;
+                            <div class="progress progress-striped active" data-appear-progress-animation="@item.Persent%">
+                                <div class="progress-bar progress-bar-@classes[k % 5]">@item.GetName(Lang.CurrentLanguage) @item.Persent%</div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model User
+
+@{
+    var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+}
+
+<div id="sidebar" class="sidebar col-sm-3 col-md-3">
+    <aside class="widget menu">
+        <header>
+            <h3 class="title">@Lang.MyAccountText</h3>
+        </header>
+
+        <div class="social-list" style="    height: 160px; text-align: center; ">
+            <a class="icon rounded icon-twitter" href="#" style="width: 80%; text-align: center;">
+                @if (!string.IsNullOrEmpty(Model.Imagename))
+                {
+                    <img src="~/Files/Images/Profile/256/@Model.Imagename" style="height: 150px;" alt="" />
+                }
+                else
+                {
+                    <img src="~/img/profile.png" style="height: 150px;" alt="" />
+                }
+            </a>
+        </div>
+
+        <form asp-controller="Profile" asp-action="UpdateImage" asp-antiforgery="true" method="post" class="form-box" enctype="multipart/form-data" role="form" style="padding: 0px; text-align:center;">
+
+            <div class="sidebar col-sm-12 col-md-12">
+                @if (string.IsNullOrEmpty(Model.Imagename))
+                {
+                    <div class="file btn btn-border btn-xs btn-success uploadButtonDiv" style="    margin-left: -15px;">
+                        <i class="fa fa-plus-square" style="margin-right: 5px;"></i>Add photo
+                        <input type="file" name="postedFile" class="btn btn-xs btn-success uploadImageFile" onchange="form.submit();" />
+                    </div>
+                }
+                else
+                {
+                    <div class="file btn btn-border btn-xs btn-warning uploadButtonDiv" style="margin-left: -15px; margin-right: 12px; margin-top: 6px;">
+                        <i class="fa fa-rotate-left"></i> Change photo
+                        <input type="file" name="postedFile" class="btn btn-xs btn-success uploadImageFile" onchange="form.submit();">
+                    </div>
+
+                    <a class=" btn btn-border btn-xs btn-danger" onclick="confirmDeletePhoto()" style="margin-left: -15px; margin-top: 6px;">
+                        <i class="fa fa-trash"></i>
+                        Delete
+                    </a>
+                }
+            </div>
+        </form>
+        <nav>
+            <ul>
+                <li class="@(actionName == "Room" ? "active" : "")">
+                    <a asp-controller="Profile" asp-action="Room">
+                        <i class="fa fa-user item-icon"></i>
+                        @Lang.MenuERoomText
+                    </a>
+                </li>
+                <li class="@(actionName == "Info" ? "active" : "")">
+                    <a asp-controller="Profile" asp-action="Info">
+                        <i class="fa fa-gears item-icon"></i>
+                        @Lang.MenuAccountInformation
+                    </a>
+                </li>
+                <li class="@(actionName == "ChangePassword" ? "active" : "")">
+                    <a asp-controller="Profile" asp-action="ChangePassword">
+                        <i class="fa fa-lock item-icon"></i>
+                        @Lang.MenuChangePasswordText
+                    </a>
+                </li>
+                @if (Model.Role == (int)EnumUserRole.Instructor)
+                {
+                    <li class="@(actionName == "Courses" ? "active" : "")">
+                        <a asp-controller="Profile" asp-action="Courses">
+                            <i class="fa fa-video-camera item-icon"></i>
+                            My Courses
+                        </a>
+                    </li>
+                }
+                <li class="@(actionName == "Orders" ? "active" : "")">
+                    <a @* asp-controller="Profile" asp-action="Room" *@>
+                        <i class="fa fa-pencil-square-o item-icon"></i>
+                        My Orders
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+</div>

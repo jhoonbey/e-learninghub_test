@@ -1,0 +1,127 @@
+﻿<environment include="Development">
+    <div>&lt;environment include="Development"&gt;</div>
+</environment>
+<environment exclude="Development">
+    <div>&lt;environment exclude="Development"&gt;</div>
+</environment>
+<environment include="Staging,Development,Staging_2">
+    <div>
+        &lt;environment include="Staging,Development,Staging_2"&gt;
+    </div>
+</environment>
+
+
+<br />
+
+@*uiCultureInfo = @ViewBag.uiCultureInfo
+    <br />
+    cultureInfo = @ViewBag.cultureInfo
+
+    <br />
+
+
+     url   @ViewBag.url
+    <br />
+     encode   @ViewBag.encode
+    <br />
+     decode   @ViewBag.decode
+    <br />*@
+
+
+@*<video id="video" preload="auto" width="600" height="400">
+        <source src="/api/VideoPlayer/getvideo?videoId=4&courseId=1&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.v5Q0ODfAi5QPEboBUG-uRbzxK5WXahUyA7bu-GBNzW8" type="video/mp4" />
+    </video>*@
+
+
+@*<video width="480" height="320" controls="controls" autoplay="autoplay">
+        <source src="http://localhost:44444/api/VideoStream/GetFree?courseId=55" type="video/mp4">
+    </video>*@
+
+@*<link rel="stylesheet" href="~/css/chosen/chosen.css">*@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
+
+<section id="main" class="page ">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">testttt</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 content">
+
+                @*<select class="chzn-select" multiple="TRUE" name="faculty" style="width:200px;">
+                        <option value="AC">A</option>
+                        <option value="AD">B</option>
+                        <option value="AM">C</option>
+                        <option value="AP">D</option>
+                    </select>*@
+
+                @*<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">*@
+                @*<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>*@
+                @*<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>*@
+                @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">*@
+
+                @*<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>*@
+
+
+
+                <select class="chzn-select" multiple="multiple" name="faculty" style="width:200px;">
+                    <option value="AC">A</option>
+                    <option value="AD">B</option>
+                    <option value="AM">C</option>
+                    <option value="AP">D</option>
+                </select>
+
+            </article>
+        </div>
+    </div>
+</section>
+
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+
+        $.getJSON("http://jsonip.com?callback=?", function (data) {
+            alert(data.ip);
+        });
+
+
+    });
+
+</script>
+
+@*<script type="text/javascript">
+        $(function () {
+
+            $.ajax({
+                url: 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyCJ7_NoaZ4cFjupJuTikKc0-Oq1wH1sAdg',
+                dataType: 'jsonp',
+                data: {
+                    q: 'Hello world!',  // text to translate
+                    v: '2.0',
+                    langpair: 'en|es'
+                },   // '|es' for auto-detect
+                success: function (result) {
+                    alert(JSON.stringify(result));
+
+                    //console.log(result);
+                    alert(result.responseData.translatedText);
+                },
+                error: function (XMLHttpRequest, errorMsg, errorThrown) {
+                    alert('dddd');
+
+                    alert(errorMsg);
+                }
+            });
+
+        });
+    </script>*@
+
+<script>
+
+
+</script>

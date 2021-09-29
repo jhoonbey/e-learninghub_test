@@ -1,0 +1,55 @@
+﻿@model  app.Model.Entities.Image
+
+@Html.Partial("~/Areas/Addmein/Views/Shared/_AlertPartialRedirect.cshtml")
+
+@{
+    string message = string.Empty;
+    switch (Model.Sector)
+    {
+        case "AboutBG": message = "Recommended size is 1600x496"; break;
+        case "HomeSlide": message = "Recommended size is 1200x350"; break;
+        case "Contact": message = "Recommended size is 800x600"; break;
+        case "ServiceBG": message = "Recommended size is 800x600"; break;
+        case "CaseStudyBG": message = "Recommended size is 800x600"; break;
+        case "BlogBG": message = "Recommended size is 800x600"; break;
+        case "HomeBG": message = "Recommended size is 1600x840"; break;
+        case "About": message = "Recommended size is 823x474"; break;
+        case "AboutVision": message = "Recommended size is 800x600"; break;
+        case "AboutMission": message = "Recommended size is 800x600"; break;
+        case "TestimonialBG": message = "Recommended size is 798x500"; break;
+        case "Quote": message = "Recommended size is 1600x450"; break;
+        case "QuoteBG": message = "Recommended size is 800x600"; break;
+        default: break;
+    }
+}
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well">
+            <h2><i class="icon icon-red icon-plus"></i>@Model.Sector photos. (@message)</h2>
+        </div>
+        <div class="box-content">
+            @using (Html.BeginForm("CreateImage", "Image", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.Sector)
+
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Photo</label>
+                        <div class="controls">
+                            <input type="file" name="postedFile" accept="image/*" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" onclick="goBack();">Cancel</a>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>

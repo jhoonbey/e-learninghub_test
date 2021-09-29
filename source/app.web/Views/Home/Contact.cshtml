@@ -1,0 +1,86 @@
+﻿@model ContactViewModel
+
+<div class="breadcrumb-box">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a asp-controller="Home" asp-action="Index">@Lang.HomeText</a> </li>
+            <li class="active">@Lang.ContactUsText</li>
+        </ul>
+    </div>
+</div>
+
+<section id="main">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.ContactUsText</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="content col-sm-12 col-md-12">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 contact-info bottom-padding">
+                        <address>
+                            <div class="title">@Lang.AddressText</div>
+                            @if (ViewBag.Contact_Address != null)
+                            {
+                                @Html.Raw(((Option)ViewBag.Contact_Address).GetName(Lang.CurrentLanguage))
+                            }
+                        </address>
+                        <div class="row">
+                            <address class="col-sm-6 col-md-6">
+                                <div class="title">@Lang.PhoneText</div>
+                                <div>
+                                    @if (ViewBag.Contact_Phone != null)
+                                    {
+                                        @Html.Raw(((Option)ViewBag.Contact_Phone).GetName(Lang.CurrentLanguage))
+                                    }
+                                </div>
+                            </address>
+                            <address class="col-sm-6 col-md-6">
+                                <div class="title">@Lang.EmailText</div>
+                                <div>
+                                    @if (ViewBag.Contact_Email != null)
+                                    {
+                                        @Html.Raw(((Option)ViewBag.Contact_Email).GetName(Lang.CurrentLanguage))
+                                    }
+                                </div>
+                            </address>
+                        </div>
+                        <hr>
+                        @if (ViewBag.Contact_Info != null)
+                        {
+                            @Html.Raw(((Option)ViewBag.Contact_Info).GetName(Lang.CurrentLanguage))
+                        }
+                    </div>
+                    <div class="col-sm-6 col-md-6 bottom-padding">
+                        <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+
+                        <form asp-controller="Home" asp-action="Contact" asp-antiforgery="true"  method="post" id="contactform" class="form-box register-form" role="form" enctype="multipart/form-data">
+
+                            <h3 class="title">@Lang.QuickContactText</h3>
+                            <div id="success"></div>
+                            <label>@Lang.NameText: <span class="required">*</span></label>
+                            <input asp-for="Name" class="form-control" type="text" />
+
+                            <label>@Lang.EmailText: <span class="required">*</span></label>
+                            <input asp-for="Email" class="form-control" type="text" />
+
+                            <label>@Lang.PhoneText:</label>
+                            <input asp-for="Phone" class="form-control" type="text" />
+
+                            <label>@Lang.CommentText:</label>
+                            <textarea asp-for="Comment" class="form-control" type="text"> </textarea>
+
+                            <div class="clearfix"></div>
+                            <div class="buttons-box clearfix">
+                                <button class="btn btn-default">@Lang.SubmitText</button>
+                                <span class="required"><b>*</b> @Lang.RequiredField</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

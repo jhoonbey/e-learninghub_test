@@ -1,0 +1,62 @@
+﻿@model app.Model.EntityCollections.CaseStudyEntityCollection
+
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <a href ="@Url.Action("Create", "CaseStudies", new { area = "Addmein" })" class="btn btn-small btn-success btn-round" style="float: right; margin-right: 10px;">Add new</a>
+            <h2><i class="icon icon-red icon-lightbulb"></i>Case Studies</h2>
+            <p style="float: right; margin: 5px 20px 0px 0px;">Count - <a>@Model.AllCount</a> </p>
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th style="width: 100px; text-align: center;">Create date</th>
+                        <th>Main photo</th>
+                        <th style="width: 20%; text-align: center;">Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CaseStudies)
+                    {
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <a href="@Url.Action("View", "CaseStudies", new { id = item.Id, area = "Addmein" })" >@item.Name</a>
+                            </td>
+                            <td style="width: 100px; text-align: center; vertical-align: middle;">
+                                @item.CreateDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(item.ImageName))
+                                {
+                                    <img src="@Url.Content("~/_Files/Images/CaseStudy/64/" + item.ImageName)" alt="" width="64" />
+                                }
+                            </td>
+                            <td class="center" style="width: 20%; text-align: center; vertical-align: middle;">
+                                <a class="btn btn-danger" onclick="confirmDelete(@item.Id)"  style="">
+                                    <i class="icon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                                <a class="btn btn-info" href="@Url.Action("Edit", "CaseStudies", new { id = item.Id })" >
+                                    <i class="icon-edit icon-white"></i>
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function confirmDelete(id) {
+        if (confirm("Are you sure to delete this Case study ?")) {
+            document.location.href = '@Url.Action("Delete", "CaseStudies", new { area = "Addmein" })/' + id;
+        }
+    }
+</script>
+
+

@@ -1,0 +1,38 @@
+﻿@model Course
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="icon icon-red icon-edit"></i>Edit Course</h2>
+        </div>
+        <div class="box-content">
+            <form asp-area="Addmein" asp-controller="Courses" asp-action="Sendback" asp-antiforgery="true" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="IsDeleted" type="hidden" />
+                <input asp-for="CreateDate" type="hidden" />
+                <input asp-for="CategoryId" type="hidden" />
+                <input asp-for="SubCategoryId" type="hidden" />
+                <input asp-for="Status" type="hidden" />
+                <input asp-for="Description" type="hidden" />
+                <input asp-for="Name" type="hidden" />
+                <input asp-for="UserId" type="hidden" />
+                <input asp-for="WhatObjectives" type="hidden" />
+                <input asp-for="WhatSkills" type="hidden" />
+                <input asp-for="WhoShouldTake" type="hidden" />
+
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Reject Reason</label>
+                        <div class="controls">
+                            <textarea asp-for="RejectReason" type="" style="height : 100px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" asp-area="Addmein" asp-controller="Courses" asp-action="List">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

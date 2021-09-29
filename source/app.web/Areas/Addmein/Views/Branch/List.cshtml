@@ -1,0 +1,56 @@
+﻿@model BranchEntityCollection
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDIESmCq9IshHldpB8SHFuQIFkGp2qW4ao&sensor=false&language=en"></script>
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            @if (Model.Branches.Count < 1)
+            {
+                <a href="@Url.Action("Create", "Branch", new { area = "Addmein" })" class="btn btn-small btn-success btn-round" style="float: right; margin-right: 10px;">Add new</a>
+            }
+            <h2><i class="icon icon-red icon-star-on"></i>Location</h2>
+            @*<p style="float: right; margin: 5px 20px 0px 0px;">Count - <a>@Model.AllCount</a> </p>*@
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th style="width: 20%; text-align: center;">Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Branches)
+                    {
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                @item.AddressByGoogle
+                            </td>
+                            <td style="width: 100px; text-align: center; vertical-align: middle;">
+                                @item.CreateDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
+                            </td>
+                            <td class="center" style="width: 20%; text-align: center; vertical-align: middle;">
+                                <a class="btn btn-danger" onclick="confirmDelete(@item.Id)" style="">
+                                    <i class="icon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                                <a class="btn btn-info" href="@Url.Action("Edit", "Branch", new { id = item.Id })">
+                                    <i class="icon-edit icon-white"></i>
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function confirmDelete(id) {
+        if (confirm("Are you sure to delete this Branch ?")) {
+            document.location.href = '@Url.Action("Delete", "Branch", new { area = "Addmein" })/' + id;
+        }
+    }
+</script>

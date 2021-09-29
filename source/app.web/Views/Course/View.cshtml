@@ -1,0 +1,222 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model CourseViewModel
+
+@{
+    Model.Sections.Reverse();
+    ViewData["Title"] = Model.Course.Name;
+}
+
+<section id="main" class="page ">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.CourseDetailsTitleText</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row" style="text-align:center; padding: 10px 30%;">
+            <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+        </div>
+        <article class="post item">
+            <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+            <h2 class="entry-title"><a>@Model.Course.Name</a></h2>
+            <div class="entry-content">
+                @Model.Course.Description
+            </div>
+            <div class="entry-content">
+                @Model.Course.WhatObjectives
+            </div>
+            <div class="entry-content">
+                @Model.Course.WhatSkills
+            </div>
+            <div class="entry-content">
+                @Model.Course.WhoShouldTake
+            </div>
+        </article>
+        <div class="row">
+            <article class="col-sm-12 col-md-12 content">
+                <div class="my-account">
+                    <div class="bottom-padding">
+                        @if (Model.Course.Status == (int)EnumCourseStatus.Draft)
+                        {
+                            if (Model.Sections.Count < 1)
+                            {
+                                <form asp-controller="Section" asp-action="Create" asp-antiforgery="true" method="post" enctype="multipart/form-data" role="form" class="form-inline">
+                                    <input type="hidden" name="courseId" value="@Model.Course.Id" />
+                                    <div class="form-group" style="width : 30%;">
+                                        <label>@Lang.AddYourFirstSectionText <span class="required">*</span></label>
+                                        <input name="name" class="form-control" type="text" style="width : 100%; " />
+                                    </div>
+                                    <div class="form-group" style="width : 30%;">
+                                        <label></label>
+                                        <br />
+                                        <button type="submit" class="btn btn-success" style="margin-left:10px;">@Lang.SaveButtonText</button>
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <div class="title-box">
+                                    <h2 class="title">Add video</h2>
+                                </div>
+                                <div class="col-sm-8 col-md-8">
+                                    <form asp-controller="Video" asp-action="Create" asp-antiforgery="true" method="post" enctype="multipart/form-data" role="form" class="form-inline">
+                                        <input type="hidden" name="courseId" value="@Model.Course.Id" />
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <div class="form-group" style="width : 50%;">
+                                                    <label>@Lang.SectionSelectText <span class="required">*</span></label>
+                                                    <select name="sectionId" class="form-control selectBox">
+                                                        <option value="">-- Select section --</option>
+                                                        @foreach (var item in Model.Sections)
+                                                        {
+                                                            <option value="@item.Id">@item.Name</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group" style="width : 50%;">
+                                                    <label style="margin-top: 5px;">@Lang.VideoNameText <span class="required">*</span></label>
+                                                    <input name="name" class="form-control" type="text" style="width : 100%; " />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group" style="width : 100%;">
+                                                    <label style="margin-top: 5px;">Select video <span class="required">*</span></label>
+                                                    <input type="file" name="postedFile" accept="video/*" style="width: 100%; margin: 5px 0 10px 0;" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-success">@Lang.SaveButtonText</button>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                </div>
+                                <div class="col-sm-4 col-md-4">
+                                    <form asp-controller="Section" asp-action="Create" asp-antiforgery="true" method="post" enctype="multipart/form-data" role="form" class="form-inline">
+                                        <input type="hidden" name="courseId" value="@Model.Course.Id" />
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <div class="form-group" style="width : 100%;">
+                                                    <label>@Lang.SectionCreateNewText <span class="required">*</span></label>
+                                                    <input name="name" class="form-control" type="text" style="width : 100%;  margin-bottom: 10px; " />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-success">@Lang.SaveButtonText</button>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="row">
+            <div class="title-box">
+                <h2 class="title">Video list</h2>
+            </div>
+            @if (Model.Videos.Count < 1)
+            {
+                <div class="highlight">
+                    <pre style="text-align:center">NO VIDEO</pre>
+                </div>
+            }
+            else
+            {
+                <div class="bottom-padding col-sm-6 col-md-6">
+                    <div class="panel-group multi-collapse" id="accordion1">
+                        @foreach (var item in Model.Sections)
+                        {
+                            string collapse = "collapse1" + item.Id.ToString();
+
+                            <div class="panel panel-default active">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion1" href="#@collapse">
+                                            @item.Name
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="@collapse" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <ul class="list-group">
+                                            @foreach (var video in Model.Videos.Where(e => e.SectionId == item.Id))
+                                            {
+                                                <li class="list-group-item">
+                                                    <a class="venobox_custom" data-vbtype="iframe" href="@Configuration["Site:Link"]/api/VideoStream/GetVideo?videoId=@video.Id&courseId=@Model.Course.Id">
+                                                        <img src="~/@Configuration.GetSection("Site")["ImagesPath"]/Snapshot/Video/@video.Id/Original/@video.Snapshot" style="height: 50px; width:50px; margin-right:10px;" alt="" />
+                                                        @video.Name
+                                                    </a>
+
+                                                    @if (Model.Course.UserId == (int)ViewBag.Id && Model.Course.Status == (int)EnumCourseStatus.Draft)
+                                                    {
+                                                        <a class="btn btn-xs btn-border btn-danger" onclick="confirmDelete(@video.Id)" style="float: right;">
+                                                            <i class="icon-trash icon-white"></i>
+                                                            Delete
+                                                        </a>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="bottom-padding col-sm-6 col-md-6">
+                    @if (Model.Course.Status == (int)EnumCourseStatus.Draft)
+                    {
+                        <div class="content-block bottom-padding text-center bg">
+                            @if (!string.IsNullOrEmpty(Model.Course.RejectReason))
+                            {
+                                <p>Reject reason:</p>
+                                <p class="lead" style="color:red;">@Model.Course.RejectReason </p>
+                            }
+                            <button class="btn btn-default" onclick="confirmSubmit(@Model.Course.Id)">@Lang.SendForApproval</button>
+                        </div>
+                    }
+                    else
+                  if (Model.Course.Status == (int)EnumCourseStatus.Sent)
+                    {
+                        <div class="content-block bottom-padding text-center bg">
+                            <span class="word-rotate bg-warning">
+                                <span class="words-box">
+                                    <span>Waiting for approve</span>
+                                    <span>Waiting for approve</span>
+                                    <span>Waiting for approve</span>
+                                </span>
+                            </span>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    function confirmDelete(id)
+    {
+        if (confirm("Are you sure to delete this item ?"))
+        {
+            document.location.href = '@Url.Action("Delete", "Video")/' + id;
+        }
+    }
+
+    function confirmSubmit(id)
+    {
+        if (confirm("Are you sure to send for approval"))
+        {
+            document.location.href = '@Url.Action("SendApproval", "Course")/' + id;
+        }
+    }
+</script>

@@ -1,0 +1,14 @@
+﻿@{
+    Layout = null;
+    var error = ViewData.ModelState["errorKey"];
+}
+@if (error != null)
+{
+    foreach (var item in error.Errors)
+    {
+        <div class="alert alert-danger alert-dismissable">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button"> × </button>
+            @item.ErrorMessage
+        </div>
+    }
+}

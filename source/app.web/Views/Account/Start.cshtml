@@ -1,0 +1,196 @@
+﻿@model StartViewModel
+@{
+    Layout = "_AccountLayout";
+
+    string act = "login";
+    if (ViewData["Act"] != null)
+    {
+        act = (string)ViewData["Act"];
+    }
+
+    string roleDetector = "l";
+    if (ViewData["RD"] != null)
+    {
+        roleDetector = (string)ViewData["RD"];
+    }
+    if (Model != null && Model.Rolename != null)
+    {
+        if (Model.Rolename == "instructor")
+        {
+            roleDetector = "i";
+        }
+    }
+}
+
+<style>
+    .field-validation-error, .validation-summary-errors {
+        color: red;
+        font-size: 12px;
+    }
+
+    .input-validation-error {
+        border-color: red;
+        font-size: 12px;
+    }
+</style>
+<input name="pageName" type="hidden" value="@act" />
+<div class="container login-register">
+    <div class="row">
+        <div class="col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <div data-appear-animation="bounceInDown">
+                <div class="rotation">
+                    <div class="front-end">
+                        <div class="form-content">
+                            @if (act == "login")
+                            {
+                                <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+                            }
+                            <form asp-controller="Account" asp-action="Login" asp-antiforgery="true" method="post" class="form-box login-form" enctype="multipart/form-data" role="form">
+
+                                <h3 class="title">
+                                    @Lang.SignInPanelTitle
+                                    <small>
+                                        @Lang.OrText
+                                        <a href="/#" id="switchToSignUpPanel" class="switch-form sing-up">@Lang.SignUpPanelTitle</a>
+                                    </small>
+                                </h3>
+
+                                <div class="form-group">
+                                    <label>@Lang.EmailText <span class="required">*</span></label>
+                                    <input asp-for="LoginEmail" class="form-control" type="email" name="LoginEmail" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="LoginEmail"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.PasswordText: <span class="required">*</span></label>
+                                    <input asp-for="LoginPassword" class="form-control" type="password" name="LoginPassword" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="LoginPassword"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox">
+                                        <input asp-for="LoginRememberMe" type="checkbox"> @Lang.RememberPassword
+                                    </label>
+                                </div>
+                                <div class="buttons-box clearfix">
+                                    <button class="btn btn-default" value="login">@Lang.SigninSubmitButton</button>
+                                    <a href="/#" class="switch-form forgot" id="forgetPasswordButton">@Lang.ForgotYourPassword</a>
+                                    <span class="required"><b>*</b> @Lang.RequiredField</span>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="back-end">
+                        <div class="form-content">
+                            @if (act == "register")
+                            {
+                                <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+                            }
+                            <form asp-controller="Account" asp-action="Register" asp-antiforgery="true" method="post" enctype="multipart/form-data"
+                                  class="form-box register-form " role="form">
+
+                                <h3 class="title">
+                                    @Lang.SignUpPanelTitle <small>
+                                        @Lang.OrText
+                                        <a href="/#" id="switchToSignInPanel" class="switch-form sing-in">@Lang.SignInPanelTitle</a>
+                                    </small>
+                                </h3>
+
+                                <div class="form-group">
+                                    <label>@Lang.NameText: <span class="required">*</span></label>
+                                    <input asp-for="Name" class="form-control" type="text" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="Name"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.SurnameText: <span class="required">*</span></label>
+                                    <input asp-for="Surname" class="form-control" type="text" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="Surname"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.MobileText: <span class="required">*</span></label>
+                                    <input asp-for="Mobile" class="form-control" type="tel" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="Mobile"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.EmailText: <span class="required">*</span></label>
+                                    <input asp-for="Email" class="form-control" type="text" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="Email"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.PasswordText: <span class="required">*</span></label>
+                                    <input asp-for="Password" class="form-control" type="password" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="Password"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.ConfirmPasswordText: <span class="required">*</span></label>
+                                    <input asp-for="ConfirmPassword" class="form-control" type="password" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="ConfirmPassword"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.PositionText: </label>
+                                    <input asp-for="Position" class="form-control" type="text" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="Position"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Lang.WorkplaceText: </label>
+                                    <input asp-for="Workplace" class="form-control" type="text" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="Workplace"></span>
+                                </div>
+                                <div class="form-group" id='radioButtons'>
+                                    <input id="roleDetector" type="hidden" value="@roleDetector" />
+                                    <label class="radio">
+                                        <input asp-for="Rolename" type="radio" value="learner" id="learner" onchange="setDisplay('CategoryPanel', false);" style="margin-bottom: 0px;" />@Lang.LearnerText
+                                    </label>
+                                    <label class="radio">
+                                        <input asp-for="Rolename" type="radio" value="instructor" id="instructor" onchange="setDisplay('CategoryPanel', true);" style="margin-bottom: 0px;" />@Lang.InstructorText
+                                    </label>
+                                    <span asp-validation-for="Rolename"></span>
+                                </div>
+                                <div class="form-group" id="CategoryPanel">
+                                    <label>@Lang.CategoryText: </label>
+                                    <select asp-for="@Model.CategoryId" asp-items="@ViewBag.Categories" style="margin-bottom: 0px;"></select>
+                                    <span asp-validation-for="CategoryId"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox" style=" margin: 0px 0 0px;">
+                                        <input asp-for="@Model.IsAgreeTerms" type="checkbox" style="margin-bottom: 0px; " /> @Lang.IAgreeTermsAndConditions
+                                    </label>
+                                    <span asp-validation-for="IsAgreeTerms"></span>
+                                </div>
+                                <div class="buttons-box clearfix">
+                                    <button class="btn btn-default" onclick="setDialCode();">@Lang.RegisterSubmitButton</button>
+                                    <span class="required"><b>*</b> @Lang.RequiredField</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="back-end">
+                        <div class="form-content">
+                            @if (act == "reset")
+                            {
+                                <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+                            }
+                            <form asp-controller="Account" asp-action="Reset" asp-antiforgery="true" method="post" enctype="multipart/form-data" class="form-box forgot-form" style="padding: 66px 30px 40px;">
+
+                                <h3 class="title">@Lang.ResetPanelTitle</h3>
+                                <p>@Lang.ResetPanelInfo</p>
+                                <div class="form-group">
+                                    <label>@Lang.EmailText<span class="required">*</span></label>
+                                    <input asp-for="ResetEmail" class="form-control" type="text" style="margin-bottom: 0px;" />
+                                    <span asp-validation-for="ResetEmail"></span>
+                                </div>
+                                <div class="buttons-box clearfix">
+                                    <button class="btn btn-default">@Lang.ResetSubmitButton</button>
+                                    <button class="btn btn-border btn-inverse switch-form sing-in"><i class="fa fa-long-arrow-left"></i>@Lang.ResetBackLoginText</button>
+                                    <span class="required"><b>*</b> @Lang.RequiredField</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

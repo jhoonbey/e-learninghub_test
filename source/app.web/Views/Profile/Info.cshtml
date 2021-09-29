@@ -1,0 +1,210 @@
+﻿@model UserDataViewModel
+
+@{
+    var currentUser = (User)ViewBag.CurrentUser;
+    var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+}
+
+<div class="breadcrumb-box breadcrumb-none"></div>
+<section id="main" class="page ">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.MenuERoomText</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row" style="text-align:center; padding: 10px 30%;">
+            <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+        </div>
+
+        <div class="row">
+
+            <partial name="~/Views/Profile/_SidebarProfile.cshtml" model="currentUser" />
+
+            <article class="col-sm-9 col-md-9 content">
+                <div class="my-account margin-top">
+                    <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+
+                    <form asp-controller="Profile" asp-action="Info" asp-antiforgery="true" method="post" role="form" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="title-box">
+                                    <h2 class="title">@Lang.MenuAccountInformation</h2>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.NameText: <span class="required">*</span></label>
+                                                <input asp-for="Name" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.SurnameText: <span class="required">*</span></label>
+                                                <input asp-for="Surname" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.PositionText: <span class="required">*</span></label>
+                                                <input asp-for="Position" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.WorkplaceText: <span class="required">*</span></label>
+                                                <input asp-for="Workplace" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.AddressText: <span class="required">*</span></label>
+                                                <input asp-for="Address" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.UniversityText: <span class="required">*</span></label>
+                                                <input asp-for="University" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.FBLinkText: </label>
+                                                <input asp-for="FbLink" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.LinkedinLinkText: </label>
+                                                <input asp-for="LinkedinLink" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.TwitterLinkText: </label>
+                                                <input asp-for="TwitterLink" class="form-control" type="text" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="form-group">
+                                                <label>@Lang.InterestedCategoryText: </label>
+                                                <br />
+
+                                                <select asp-for="InterestedCategoryIdSet" asp-items="@ViewBag.InterestedCategories" class="chzn-select" multiple="multiple" style="margin-bottom: 0px; width:100%;"></select>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12">
+                                @if (currentUser.Role != (int)EnumUserRole.Learner)
+                                {
+                                    <div class="col-sm-6 col-md-6">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <div class="form-group">
+                                                    <label>@Lang.CategoryText: </label>
+                                                    <br />
+                                                    <select asp-for="CategoryIdSet" asp-items="@ViewBag.Categories" class="chzn-select" multiple="multiple" style="margin-bottom: 0px; width:100%;"></select>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+
+                            @*<div class="col-sm-12 col-md-12">
+                                    <div class="col-sm-12 col-md-12">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <div class="form-group">
+                                                    <label>@Lang.InfoText <span class="required">*</span></label>
+                                                    <textarea asp-for="Info" class="ckeditor"></textarea>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>*@
+                        </div>
+                        <div class="buttons-box clearfix" style="margin-left: 15px;">
+                            <button class="btn btn-default" type="submit">@Lang.SaveButtonText</button>
+                            <a class="btn btn-primary" asp-controller="Profile" asp-action="Room">@Lang.CancelText</a>
+                            <span class="required"><b>*</b> @Lang.RequiredField</span>
+                        </div>
+                    </form>
+                </div>
+            </article>
+        </div>
+    </div>
+
+</section>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script>
+    function confirmDeletePhoto() {
+        if (confirm("Are you sure?")) {
+            document.location.href = '@Url.Action("DeleteImage", "Profile")';
+        }
+    }
+
+    $(function () {
+        $(".chzn-select").chosen();
+    });
+
+    //jQuery(document).ready(function () {
+    //    CKEDITOR.replaceClass = 'ckeditor';
+    //});
+</script>

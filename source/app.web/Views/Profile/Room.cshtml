@@ -1,0 +1,245 @@
+﻿@model User
+
+@{
+    //var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+    var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+}
+
+<div class="breadcrumb-box breadcrumb-none"></div>
+<section id="main" class="page ">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.MenuERoomText</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row" style="text-align:center; padding: 10px 30%;">
+            <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+        </div>
+
+        <div class="row">
+            <partial name="~/Views/Profile/_SidebarProfile.cshtml" model="Model" />
+            <article class="col-sm-9 col-md-9 content">
+                <div class="my-account">
+                    <div class="bottom-padding">
+                        <p class="hello"><strong>@Model.Name @Model.Surname</strong></p>
+                        @*<p>@Html.Raw(Html.Encode(Model.Info))</p>
+                            <p>@Html.Encode(Model.Info)</p>*@
+                        @*<p>@Html.Raw(Model.Info)</p>*@
+                    </div>
+
+                    @*<div class="bottom-padding">
+                            <div class="title-box">
+                                <h2 class="title">Recent Orders</h2>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered text-left my-orders-table">
+                                    <thead>
+                                        <tr class="first last">
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Ship To</th>
+                                            <th><span class="nobr">Order Total</span></th>
+                                            <th>Status</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>100000022</td>
+                                            <td>4/30/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$1,306.84</span></td>
+                                            <td class="text-primary"><em>New</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000021</td>
+                                            <td>3/03/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$1702.04</span></td>
+                                            <td class="text-success"><em>Performed</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000020</td>
+                                            <td>1/03/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$702.04</span></td>
+                                            <td class="text-danger"><em>Canceled</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000019</td>
+                                            <td>3/02/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$1105.02</span></td>
+                                            <td class="text-warning"><em>Pending</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000018</td>
+                                            <td>3/02/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$202.50</span></td>
+                                            <td class="text-success"><em>Performed</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000017</td>
+                                            <td>1/02/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$2882.85</span></td>
+                                            <td class="text-success"><em>Performed</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000016</td>
+                                            <td>25/01/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$52.10</span></td>
+                                            <td class="text-danger"><em>Canceled</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000015</td>
+                                            <td>24/01/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$12002.54</span></td>
+                                            <td class="text-warning"><em>Pending</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000014</td>
+                                            <td>12/01/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$952.80</span></td>
+                                            <td class="text-success"><em>Performed</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>100000013</td>
+                                            <td>3/01/14</td>
+                                            <td>Mr. Alen</td>
+                                            <td><span class="price">$1202.12</span></td>
+                                            <td class="text-success"><em>Performed</em></td>
+                                            <td class="text-center last">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-info">View Order</a>
+                                                    <a href="#" class="btn btn-sm btn-default">Reorder</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="title-box">
+                            <h2 class="title">Account Information</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="info-box">
+                                    <h3 class="subtitle">Contact Information</h3>
+                                    <p>
+                                        Mr. Alen<br>
+                                        mr-alen@example.com<br>
+                                        <a href="#" class="btn btn-default btn-sm margin-top"><i class="fa fa-pencil"></i> Change Password</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <h3 class="subtitle">Address Book</h3>
+                                <a href="#" class="btn btn-default btn-sm margin-top"><i class="fa fa-pencil"></i> Manage Addresses</a>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <h3 class="subtitle">Default Billing Address</h3>
+                                <address>
+                                    Mr. Alen<br>
+                                    Address<br>
+                                    City,  California, 43000<br>
+                                    United States<br>
+                                    T: 08008454555<br>
+                                    <a href="#" class="btn btn-default btn-sm margin-top"><i class="fa fa-pencil"></i> Edit Address</a>
+                                </address>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <h3 class="subtitle">Default Shipping Address</h3>
+                                <address>
+                                    Mr. Alen<br>
+                                    Address<br>
+                                    City,  California, 43000<br>
+                                    United States<br>
+                                    T: 08008454555<br>
+                                    <a href="#" class="btn btn-default btn-sm margin-top"><i class="fa fa-pencil"></i> Edit Address</a>
+                                </address>
+                            </div>
+                        </div>*@
+
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+
+</section>
+
+<script>
+    function confirmDeletePhoto() {
+        if (confirm("Are you sure?")) {
+            document.location.href = '@Url.Action("DeleteImage", "Profile")';
+        }
+    }
+</script>

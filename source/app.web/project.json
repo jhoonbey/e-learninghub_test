@@ -1,0 +1,24 @@
+﻿{
+  "sdk": {
+    "version": "2.1.300"
+  },
+
+  "publishOptions": {
+    "include": [
+      "wwwroot",
+      "Views",
+      "Areas/**/Views",
+      "**/*.cshtml",
+      "appsettings.json",
+      "web.config"
+    ],
+    "exclude": [
+      "*.pdb"
+    ]
+  },
+
+  "buildOptions": {
+    "preserveCompilationContext": true,
+    "emitEntryPoint": true
+  }
+}

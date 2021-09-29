@@ -1,0 +1,12 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<partial name="~/Areas/Addmein/Views/Shared/_AlertPartialRedirect.cshtml" />
+
+<div class="row-fluid">
+    <div class="box span12">
+        <div class="box-header well">
+            <h2><i class="icon-globe"></i>Welcome to @Configuration["Site:NameAdjacent"] Admin Panel</h2>
+        </div>
+    </div>
+</div>

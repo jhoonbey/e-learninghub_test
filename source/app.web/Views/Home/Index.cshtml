@@ -1,0 +1,21 @@
+﻿@model HomeViewModel
+
+<partial name="~/Views/Home/_SliderPartial.cshtml" />
+
+<div class="clearfix"></div>
+
+<section id="main">
+    <article class="content">
+        <partial name="~/Views/Home/_About.cshtml" model="Model" />
+
+        <partial name="~/Views/Home/_Instructors.cshtml" model="Model" />
+
+
+        <partial name="~/Views/Home/_Services.cshtml" model="Model" />
+
+        @*<partial name="~/Views/Home/_PopularCourses.cshtml" model="Model" />*@
+
+        <partial name="~/Views/Home/_Instructors2.cshtml" model="Model" />
+
+    </article>
+</section>

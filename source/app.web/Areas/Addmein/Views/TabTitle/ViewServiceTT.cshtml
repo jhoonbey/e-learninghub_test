@@ -1,0 +1,41 @@
+﻿@model  Option
+
+<div class="row-fluid">
+    <div class="box span12">
+        <div class="box-header well">
+            <a href="@Url.Action("ManageServiceTT", "TabTitle", new { area = "Addmein" })" class="btn btn-small btn-info btn-round" style="float: right; margin-right: 10px;">Edit</a>
+            <h2><i class="icon icon-red icon-page"></i>Service Tab Title</h2>
+        </div>
+        <div class="box-content">
+
+            <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: middle;">AZ</td>
+                        <td class="center" style="vertical-align: middle;">
+                            @Html.Raw(Model.Val)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;">EN</td>
+                        <td class="center" style="vertical-align: middle;">
+                            @Html.Raw(Model.ValEN)
+                        </td>
+                    </tr>
+                    @*<tr>
+                        <td style="vertical-align: middle;">TR</td>
+                        <td class="center" style="vertical-align: middle;">
+                            @Html.Raw(Model.ValTR)
+                        </td>
+                    </tr>*@
+                    <tr>
+                        <td style="vertical-align: middle;">RU</td>
+                        <td class="center" style="vertical-align: middle;">
+                            @Html.Raw(Model.ValRU)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

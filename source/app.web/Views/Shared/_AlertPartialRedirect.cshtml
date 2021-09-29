@@ -1,0 +1,27 @@
+﻿@{
+    var alert = TempData.Get<ClientAlertModel>("RedirectAlert");
+}
+
+@if (alert != null)
+{
+
+    if (alert.Status == AlertStatus.Success)
+    {
+        <div class="alert alert-success fade in " style="padding: 3px 18px 3px 10px; z-index: 999; margin-bottom: 0px;">
+            <i class="fa fa-check alert-icon"></i>
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            @Html.Raw(alert.Message)
+        </div>
+    }
+    else
+        if (alert.Status == AlertStatus.Error)
+    {
+        <div class="alert alert-danger fade in " style="padding: 3px 18px 3px 10px; z-index: 999; margin-bottom: 0px;">
+            <i class="fa fa-error alert-icon"></i>
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            @Html.Raw(alert.Message)
+        </div>
+    }
+
+    TempData.Remove("RedirectAlert");
+}

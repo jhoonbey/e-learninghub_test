@@ -1,0 +1,162 @@
+﻿
+<div class="breadcrumb-box">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a asp-controller="Home" asp-action="Index">@Lang.HomeText</a> </li>
+            <li class="active">@Lang.AboutUsText</li>
+        </ul>
+    </div>
+</div>
+<section id="main">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.AboutUsText</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="content col-sm-12 col-md-12">
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 bottom-padding">
+                        @if (ViewBag.About_Info != null)
+                        {
+                            @Html.Raw(((Option)ViewBag.About_Info).GetName(Lang.CurrentLanguage))
+                        }
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-8 bottom-padding">
+                        <div class="video-box vimeo">
+                            <iframe src="http://player.vimeo.com/video/67957799" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="bottom-padding col-sm-6 col-md-6">
+                        <div class="title-box">
+                            <h2 class="title">@Lang.OurVisionText</h2>
+                        </div>
+
+                        @if (ViewBag.OurVision != null)
+                        {
+                            int k = 0;
+
+                            <div class="panel-group one-open" id="accordion">
+                                @foreach (var item in ((EntityCollection<Vision>)ViewBag.OurVision).Items)
+                                {
+                                    k++;
+                                    string active = k == 1 ? "active" : "";
+                                    string inn = k == 1 ? "in" : "";
+                                    <div class="panel panel-default @active">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse@(k.ToString())">
+                                                    @item.GetName(Lang.CurrentLanguage)
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div id="collapse@(k.ToString())" class="panel-collapse collapse @inn">
+                                            <div class="panel-body">
+                                                @Html.Raw(item.GetDescription(Lang.CurrentLanguage))
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    <div class="bottom-padding col-sm-6 col-md-6">
+                        <div class="title-box">
+                            <h2 class="title">@Lang.OurSkillsText</h2>
+                        </div>
+                        @if (ViewBag.Skills_Description != null)
+                        {
+                            @Html.Raw(((Option)ViewBag.Skills_Description).GetName(Lang.CurrentLanguage))
+                        }
+
+                        @if (ViewBag.Skills != null)
+                        {
+                            int k = 0;
+                            string[] classes = new string[] { "danger", "info", "success", "warning", "striped" };
+                            foreach (var item in ((EntityCollection<Skill>)ViewBag.Skills).Items)
+                            {
+                                k++;
+                                <div class="progress progress-striped active" data-appear-progress-animation="@item.Persent%">
+                                    <div class="progress-bar progress-bar-@classes[k % 5]">@item.GetName(Lang.CurrentLanguage) @item.Persent%</div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-width-box bottom-padding cm-padding-bottom-36">
+        <div class="fwb-bg fwb-blur" data-blur-image="../content/img/band-3.jpg" data-blur-amount="3"><div class="overlay"></div></div>
+
+        <div class="container">
+            <div class="row">
+
+                @if (ViewBag.Features != null)
+                {
+                    int k = 0;
+                    string[] colors = new string[] { "#738d00", "#c10841", "#f89406", "#0098ca" };
+                    string[] rotations = new string[] { "fadeInLeftBig", "bounceInLeft", "bounceInRight", "fadeInRightBig" };
+                    foreach (var item in ((EntityCollection<Feature>)ViewBag.Features).Items)
+                    {
+                        k++;
+
+                        <div class="col-sm-6 col-md-3 progress-circular bottom-padding bottom-padding-mini" data-appear-animation="@rotations[k % 4]">
+                            <input type="text" class="knob" value="0" rel="@item.Persent" data-linecap="round" data-width="200" data-bgcolor="#f2f2f2" data-fgcolor="@colors[k % 4]" data-thickness=".15" data-readonly="true" disabled="">
+                            <p class="white">@item.GetName(Lang.CurrentLanguage) </p>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="content col-sm-12 col-md-12">
+                <div class="carousel-box load overflow" data-autoplay-disable="true">
+                    <div class="title-box">
+                        <a class="next" href="#">
+                            <svg x="0" y="0" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
+                            <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#fcfcfc" points="1,0.001 0,1.001 7,8 0,14.999 1,15.999 9,8 "></polygon>
+			  </svg>
+                        </a>
+                        <a class="prev" href="#">
+                            <svg x="0" y="0" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
+                            <polygon fill-rule="evenodd" clip-rule="evenodd" fill="#fcfcfc" points="8,15.999 9,14.999 2,8 9,1.001 8,0.001 0,8 "></polygon>
+			  </svg>
+                        </a>
+                        <h2 class="title">@Lang.OurHappyClientsText</h2>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="carousel">
+                            @if (ViewBag.OurHappyClients != null)
+                            {
+                                foreach (var item in ((EntityCollection<Client>)ViewBag.OurHappyClients).Items)
+                                {
+                                    <div class="col-sm-3 col-md-2 text-center">
+                                        <a href="#" class="client">
+                                            <img class="replace-2x" src="~/Files/Images/Client/256/@item.Imagename" width="170" height="103" alt="" />
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

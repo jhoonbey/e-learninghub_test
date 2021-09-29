@@ -1,0 +1,67 @@
+﻿@model Client
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <a asp-area="Addmein" asp-controller="Clients" asp-action="List" class="btn btn-small btn-inverse btn-round" style="float: right; margin-right: 10px;">Return to list</a>
+            <a href="#" onclick="confirmDelete(@Model.Id)" class="btn btn-small btn-danger btn-round" style="float: right; margin-right: 10px;">Delete</a>
+            <a asp-area="Addmein" asp-controller="Clients" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-small btn-warning btn-round" style="float: right; margin-right: 10px;">Edit</a>
+            <h2>@Model.Name</h2>
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: middle;">
+                            <b>Name</b>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            @Model.Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;">
+                            <b>Main photo</b>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            @if (!string.IsNullOrEmpty(Model.Imagename))
+                            {
+                                <img src="~/Files/Images/Client/256/@Model.Imagename" alt="" />
+                            }
+                            <form asp-area="Addmein" asp-controller="Clients" asp-action="UpdateImage" asp-antiforgery="true" method="post" class="form" enctype="multipart/form-data">
+
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                <input type="file" name="postedFile" style="width: 95%;" />
+                                @if (string.IsNullOrEmpty(Model.Imagename))
+                                {
+                                    <button class="btn btn-primary" type="submit">Add main photo</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-primary" type="submit">Change main photo</button>
+                                    <a class="btn btn-danger" onclick="confirmDeleteImage(@Model.Id)" style="">
+                                        <i class="icon-trash icon-white"></i>
+                                        Delete image
+                                    </a>
+                                }
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function confirmDelete(id) {
+        if (confirm("Are you sure to delete this item ?")) {
+            document.location.href = '@Url.Action("Delete", "Clients", new { area = "Addmein" })/' + id;
+        }
+    }
+
+    function confirmDeleteImage(id) {
+        if (confirm("Are you sure to delete this image ?")) {
+            document.location.href = '@Url.Action("DeleteImage", "Clients", new { area = "Addmein" })/' + id;
+        }
+    }
+</script>

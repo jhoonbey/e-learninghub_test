@@ -1,0 +1,68 @@
+﻿@model PagingModel
+@{
+    BaseCriteriaModel criteria = (BaseCriteriaModel)ViewBag.Criteria;
+}
+
+@if (Model.NumberOfPages > 1)
+{
+    <ul class="pagination clearfix">
+        @if (Model.CurrentPage > 1)
+        {
+            <li>
+                <a href="@(Url.Action(Model.Action, Model.Controller,
+                         new {
+                             area = Model.Area,
+                             pageNumber = 1,
+                             keyword = criteria.Keyword,
+                             status = criteria.IntCriteria2,
+                             minCD = criteria.MinCreateDate,
+                             maxCD = criteria.MaxCreateDate
+                         }))" style="cursor:pointer; font-weight: bold;"><<</a>
+            </li>
+            <li>
+                <a href="@(Url.Action(Model.Action, Model.Controller,
+                         new {
+                             area = Model.Area,
+                             pageNumber = (Model.CurrentPage - 1),
+                             keyword = criteria.Keyword,
+                             status = criteria.IntCriteria2,
+                             minCD = criteria.MinCreateDate,
+                             maxCD = criteria.MaxCreateDate
+                         }))" style="cursor:pointer; font-weight: bold;"><</a>
+            </li>
+        }
+        else
+        {
+            <li><a style="cursor: default; font-weight: bold;"><< </a></li>
+            <li><a style="cursor: default; font-weight: bold;">< </a></li>
+        }
+        @if (Model.CurrentPage < Model.NumberOfPages)
+        {
+            <li><a href="@(Url.Action(Model.Action, Model.Controller,
+                         new {
+                             area = Model.Area,
+                             pageNumber = (Model.CurrentPage + 1),
+                             keyword = criteria.Keyword,
+                             status = criteria.IntCriteria2,
+                             minCD = criteria.MinCreateDate,
+                             maxCD = criteria.MaxCreateDate
+                         }))" style="cursor:pointer; font-weight: bold;">> </a></li>
+            <li><a href="@(Url.Action(Model.Action, Model.Controller,
+                         new {
+                             area = Model.Area,
+                             pageNumber = (Model.NumberOfPages),
+                             keyword = criteria.Keyword,
+                             status = criteria.IntCriteria2,
+                             minCD = criteria.MinCreateDate,
+                             maxCD = criteria.MaxCreateDate
+                         }))" style="cursor:pointer; font-weight: bold;">>> </a></li>
+        }
+        else
+        {
+            <li><a style="cursor: default; font-weight: bold;">> </a></li>
+            <li><a style="cursor: default; font-weight: bold;">>> </a></li>
+        }
+    </ul>
+
+    <span>@Model.CurrentPage / @Model.NumberOfPages</span>
+}

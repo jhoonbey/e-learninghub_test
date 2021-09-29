@@ -1,0 +1,49 @@
+﻿@model Feature
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="icon icon-red icon-plus"></i>New Feature</h2>
+        </div>
+        <div class="box-content">
+            <form asp-area="Addmein" asp-controller="Features" asp-action="Create" asp-antiforgery="true" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Name (AZ)</label>
+                        <div class="controls">
+                            <input asp-for="NameAZ" type="text" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Name (EN)</label>
+                        <div class="controls">
+                            <input asp-for="NameEN" type="text" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Percent</label>
+                        <div class="controls">
+                            <input asp-for="Persent" type="number" />
+                        </div>
+                    </div>
+                    @*      <div class="control-group">
+                            <label class="control-label" for="focusedInput">Name (TR)</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.NameTR)
+                            </div>
+                        </div>
+                              <div class="control-group">
+                                  <label class="control-label" for="focusedInput">Name (RU)</label>
+                                  <div class="controls">
+                                      @Html.TextBoxFor(model => model.NameRU)
+                                  </div>
+                              </div>*@
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" asp-area="Addmein" asp-controller="Features" asp-action="List">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

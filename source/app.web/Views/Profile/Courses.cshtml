@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Course>
+
+@{
+    var currentUser = (User)ViewBag.CurrentUser;
+    var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+    int k = 0;
+    string sts = string.Empty;
+}
+
+<div class="breadcrumb-box breadcrumb-none"></div>
+<section id="main" class="page ">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.MyCoursesText</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row" style="text-align:center; padding: 10px 30%;">
+            <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+        </div>
+
+        <div class="row">
+
+            <partial name="~/Views/Profile/_SidebarProfile.cshtml" model="currentUser" />
+
+            <article class="col-sm-9 col-md-9 content">
+                <div class="my-account margin-top">
+                    @*<partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />*@
+
+                    @if (currentUser.Role >= (int)EnumUserRole.Instructor)
+                    {
+                        <a asp-controller="Course" asp-action="Create" class="btn btn-small btn-success btn-round"
+                           style="float: right; margin-right: 10px;">Create course</a>
+                    }
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                k++;
+
+                                if (item.Status == (int)EnumCourseStatus.Draft)
+                                {
+                                    <tr>
+                                        <td>@k</td>
+                                        <td>@item.Name</td>
+                                        <td style="color:red;">@Lang.CourseDraftStatusText</td>
+                                        <th>
+                                            <a asp-controller="Course" asp-action="View" asp-route-id="@item.Id" class="btn btn-default btn-sm">@Lang.CourseViewText</a>
+                                            <a asp-controller="Course" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">@Lang.EditText</a>
+                                        </th>
+                                    </tr>
+                                }
+                                else
+                                    if (item.Status == (int)EnumCourseStatus.Sent)
+                                {
+                                    <tr>
+                                        <td>@k</td>
+                                        <td>@item.Name</td>
+                                        <td style="color:orange;">@Lang.CourseSentStatusText</td>
+                                        <th>
+                                            <a asp-controller="Course" asp-action="View" asp-route-id="@item.Id" class="btn btn-default btn-sm">@Lang.CourseViewText</a>
+                                        </th>
+                                    </tr>
+                                }
+                                else
+                                    if (item.Status == (int)EnumCourseStatus.Approved)
+                                {
+                                    <tr >
+                                        <td>@k</td>
+                                        <td>@item.Name</td>
+                                        <td style="color:green;">@Lang.CourseApprovedStatusText</td>
+                                        <th>
+                                            <a asp-controller="Course" asp-action="View" asp-route-id="@item.Id" class="btn btn-default btn-sm">@Lang.CourseViewText</a>
+                                        </th>
+                                    </tr>
+                                }
+                            }
+
+                            @*<tr class="active">
+                                    <td>1</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>3</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>5</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>7</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="danger">
+                                    <td>9</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>*@
+                        </tbody>
+                    </table>
+
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+

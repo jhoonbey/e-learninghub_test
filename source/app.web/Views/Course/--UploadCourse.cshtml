@@ -1,0 +1,73 @@
+﻿@model PasswordChangeModel
+
+@{
+    var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+}
+
+<div class="breadcrumb-box breadcrumb-none"></div>
+<section id="main" class="page ">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.MenuERoomText</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row" style="text-align:center; padding: 10px 30%;">
+            <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+        </div>
+
+        <div class="row">
+            <article class="col-sm-12 col-md-12 content">
+                <div class="my-account margin-top">
+                    <form asp-controller="Profile" asp-action="ChangePassword" asp-antiforgery="true" method="post" role="form" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="title-box">
+                                    <h2 class="title">@Lang.MenuChangePasswordText</h2>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div class="form-group">
+                                            <label>@Lang.OldPasswordText <span class="required">*</span></label>
+                                            <input asp-for="OldPassword" class="form-control" type="password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>@Lang.NewPasswordText: <span class="required">*</span></label>
+                                            <input asp-for="NewPassword" class="form-control" type="password" />
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label>@Lang.NewPasswordConfirmText: <span class="required">*</span></label>
+                                            <input asp-for="NewPasswordConfirm" class="form-control" type="password" />
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="buttons-box clearfix">
+                            <button class="btn btn-default">@Lang.SaveButtonText</button>
+                            <span class="required"><b>*</b> @Lang.RequiredField</span>
+                        </div>
+                    </form>
+                </div>
+            </article>
+        </div>
+    </div>
+
+
+</section>
+
+<script>
+    function confirmDeletePhoto() {
+        if (confirm("Are you sure?")) {
+            document.location.href = '@Url.Action("DeleteImage", "Profile")';
+        }
+    }
+
+    jQuery(document).ready(function () {
+        CKEDITOR.replaceClass = 'ckeditor';
+    });
+</script>

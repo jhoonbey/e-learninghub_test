@@ -1,0 +1,52 @@
+﻿@model BecomeInstructorViewModel
+
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="~/js/chosen/jquery-1.8.3.js"></script>
+<div class="breadcrumb-box breadcrumb-none"></div>
+<section id="main" class="page ">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.MenuERoomText</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row" style="text-align:center; padding: 10px 30%;">
+            <partial name="~/Views/Shared/_AlertPartialRedirect.cshtml" />
+        </div>
+        <div class="row">
+            <article class="col-sm-12 col-md-12 content">
+                <div class="my-account margin-top">
+                    <form asp-controller="Profile" asp-action="BecomeInstructor" asp-antiforgery="true" method="post" role="form" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="title-box">
+                                    <h2 class="title">@Lang.BecomeInstructorText</h2>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div class="form-group">
+                                            <label>@Lang.CategoryText: </label>
+                                            <br />
+                                            <select asp-for="CategoryIdSet" asp-items="@ViewBag.Categories" class="chzn-select" multiple="multiple" style="margin-bottom: 0px; width:100%;"></select>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="buttons-box clearfix">
+                            <button class="btn btn-default" type="submit">@Lang.SaveButtonText</button>
+                            <a class="btn btn-primary" asp-controller="Home" asp-action="Index">@Lang.CancelText</a>
+                            <span class="required"><b>*</b> @Lang.RequiredField</span>
+                        </div>
+                    </form>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".chzn-select").chosen();
+    });
+</script>

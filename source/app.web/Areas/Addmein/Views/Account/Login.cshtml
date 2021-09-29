@@ -1,0 +1,57 @@
+﻿@model  app.web.client.Areas.Addmein.Models.LoginModel
+
+@{
+    Layout = null;
+}
+<title>@System.Configuration.ConfigurationManager.AppSettings["siteName"].ToString()</title>
+
+<link href="~/Areas/Addmein/Content/style/bootstrap-simplex.css" rel="stylesheet" />
+
+<link  href="@Url.Content("~/Areas/Addmein/Content/style/bootstrap-simplex.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Areas/Addmein/Content/style/bootstrap-responsive.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Areas/Addmein/Content/style/charisma-app.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Areas/Addmein/Content/style/jquery-ui-1.8.21.custom.css")" rel="stylesheet" />
+<link rel="shortcut icon" href="~/Areas/Addmein/Content/img/my/favicon.ico" />
+
+<script src="@Url.Content("~/Areas/Addmein/Content/scripts/charisma.js")"  type="text/javascript" ></script>
+<script src="@Url.Content("~/Areas/Addmein/Content/scripts/jquery-1.7.2.min.js")"  type="text/javascript" ></script>
+<script src="@Url.Content("~/Areas/Addmein/Content/scripts/jquery-ui-1.8.21.custom.min.js")"  type="text/javascript" ></script>
+<script src="@Url.Content("~/Areas/Addmein/Content/scripts/bootstrap-alert.js")"  type="text/javascript" ></script>
+
+<div class="container-fluid">
+    <div class="row-fluid" style="text-align: center;">
+        <div class="row-fluid" style="margin-bottom: 50px;">
+            <div class="span12 center login-header">
+                <img alt="Red" src="@Url.Content("~/Areas/Addmein/Content/img/my/logo.png")" width="" height="75"/>
+                <h2>Admin Panel</h2>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="well span5 center login-box">
+                @Html.Partial("~/Areas/Addmein/Views/Shared/_ErrorPartial.cshtml")
+
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="focusedInput">Username</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.Username, new { @style = "height:25px;" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="focusedInput">Password</label>
+                            <div class="controls">
+                                @Html.PasswordFor(model => model.Password, new { @style = "height:25px;" })
+                            </div>
+                        </div>
+                        <div class="form-actions" style="padding: 13px -1px 18px;">
+                            <button type="submit" class="btn btn-small btn-primary" style="width: 62%; font-size: 14px;">Enter</button>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>

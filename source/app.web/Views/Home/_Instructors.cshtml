@@ -1,0 +1,64 @@
+﻿@model HomeViewModel
+
+
+<div class="full-width-box bottom-padding cm-padding-bottom-36">
+    <div class="fwb-bg fwb-fixed band-5"><div class="overlay"></div></div>
+
+    <div class="container">
+        <div class="title-box title-white">
+            <h1 class="title no-top-padding">Meet the Team</h1>
+        </div>
+
+        <div class="row text-center">
+            @foreach (var item in Model.Instructors)
+            {
+                <div class="col-sm-3 col-md-3 rotation employee">
+                    <div class="default">
+                        <div class="image">
+                            @if (!string.IsNullOrEmpty(item.Imagename))
+                            {
+                                <img class="replace-2x" src="~/Files/Images/Profile/512/@item.Imagename" width="270" height="270" alt="" />
+                            }
+                            else
+                            {
+                                <img class="replace-2x" src="~/img/profile.png" alt="" width="270" height="270" />
+                            }
+                        </div>
+                        <div class="description">
+                            <div class="vertical">
+                                <h3 class="name">@item.Name @item.Surname</h3>
+                                <div class="role">@Lang.InstructorText</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="employee-hover">
+                        <h3 class="name">@item.Name @item.Surname</h3>
+                        <div class="role">@Lang.InstructorText</div>
+                        <div class="image">
+                            <a href="#">
+                                @if (!string.IsNullOrEmpty(item.Imagename))
+                                {
+                                    <img class="replace-2x" src="~/Files/Images/Profile/512/@item.Imagename" width="270" height="270" alt="" />
+                                }
+                                else
+                                {
+                                    <img class="replace-2x" src="~/img/profile.png" alt="" width="270" height="270" />
+                                }
+                            </a>
+                        </div>
+                        <div>
+                            @*<p>  info yoxdur. bagladim.  Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>*@
+                            <div class="contact"><b>@Lang.EmailText: </b>@item.Email</div>
+                            <div class="contact"><b>@Lang.PhoneText: </b>@item.Mobile</div>
+                        </div>
+                        <div class="social">
+                            <a class="icon rounded" href="#"><span class="icon-facebook"><i class="fa fa-facebook"></i></span></a>
+                            <a class="icon rounded" href="#"><span class="icon-twitter"><i class="fa fa-twitter"></i></span></a>
+                            <a class="icon rounded" href="#"><span class="icon-linkedin"><i class="fa fa-linkedin"></i></span></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

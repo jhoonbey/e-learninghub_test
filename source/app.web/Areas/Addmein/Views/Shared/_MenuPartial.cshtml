@@ -1,0 +1,213 @@
+﻿<div class="span2 main-menu-span">
+    <div class="well nav-collapse sidebar-nav" style="padding: 12px;">
+        <ul class="nav nav-tabs nav-stacked main-menu" style="margin-bottom: 0px;">
+            <li>
+                <a class="ajax-link" href="@Url.Action("Index", "Dashboard")"
+                   style="padding-right: 5px; padding-left: 5px;">
+                    <i class="icon icon-red icon-globe"></i><span class="hidden-tablet">Dashboard</span>
+                </a>
+            </li>
+            @*<li>
+                    <a class="ajax-link" href="@Url.Action("List", "Blogs", new { area = "Addmein" })"
+                       style="padding-right: 5px; padding-left: 5px;">
+                        <i class="icon icon-red icon-rssfeed"></i><span class="hidden-tablet">Article</span>
+                    </a>
+                </li>*@
+            @*<li>
+                    <a class="ajax-link" asp-area="Addmein" asp-controller="Categories" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                        <i class="icon icon-red icon-tag"></i>
+                        <span class="hidden-tablet">Categories</span>
+                    </a>
+                </li>*@
+            <li>
+                <a class="ajax-link" asp-area="Addmein" asp-controller="Courses" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                    <i class="icon icon-red icon-info"></i>
+                    <span class="hidden-tablet">Courses</span>
+                </a>
+            </li>
+            <li>
+                <a class="trigger right-caret" data-toggle="dropdown" style="padding-right: 5px; padding-left: 5px; cursor: pointer;">
+                    <i class="icon icon-red icon-tag"></i>Categories<i class="arrow right" style="float: right;">> </i>
+                </a>
+                <ul class="dropdown-menu sub-menu" style="top: 166px; background-color: #f5f5f5; background-color: #f5f5f5; left: 178px;">
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Categories" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Categories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="SubCategories" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Sub categories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="SubOfSubCategories" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Sub of sub categories</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*<li>
+                    <a class="ajax-link" href="@Url.Action("List", "SubCategories", new { area = "Addmein" })"
+                       style="padding-right: 5px; padding-left: 5px;">
+                        <i class="icon icon-red icon-tag"></i><span class="hidden-tablet">Sub Categories</span>
+                    </a>
+                </li>*@
+            @*<li>
+                    <a class="ajax-link" href="@Url.Action("List", "SubSubCategories", new { area = "Addmein" })"
+                       style="padding-right: 5px; padding-left: 5px;">
+                        <i class="icon icon-red icon-tag"></i><span class="hidden-tablet">Sub of Sub</span>
+                    </a>
+                </li>*@
+            @*<li>
+                    <a class="ajax-link" href="@Url.Action("List", "Testimonials", new { area = "Addmein" })" style="padding-right: 5px; padding-left: 5px;">
+                        <i class="icon icon-red icon-comment-text"></i><span class="hidden-tablet">Testimonials</span>
+                    </a>
+                </li>*@
+            @*<li>
+                        <a class="ajax-link" href="@Url.Action("List", "Quotes", new { area = "Addmein" })"
+                           style="padding-right: 5px; padding-left: 5px;">
+                            <i class="icon icon-red icon-compose"></i><span class="hidden-tablet">Quotes</span>
+                        </a>
+                    </li>
+                <li>
+                    <a class="ajax-link" href="@Url.Action("List", "Clients", new { area = "Addmein" })" style="padding-right: 5px; padding-left: 5px;">
+                        <i class="icon icon-red icon-transfer-ew"></i><span class="hidden-tablet">Clients</span>
+                    </a>
+                </li>*@
+            <li>
+                <a class="trigger right-caret" data-toggle="dropdown" style="padding-right: 5px; padding-left: 5px; cursor: pointer;">
+                    <i class="icon icon-red icon-mail-closed"></i>Mails<i class="arrow right" style="float: right;">> </i>
+                </a>
+                <ul class="dropdown-menu sub-menu" style="top: 195px; background-color: #f5f5f5; background-color: #f5f5f5; left: 178px;">
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Mails" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Mails list</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Mails" asp-action="SendBulkEmail" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Send Bulk Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="trigger right-caret" data-toggle="dropdown" style="padding-right: 5px; padding-left: 5px; cursor: pointer;">
+                    <i class="icon icon-red icon-info"></i>
+                    About
+                    <i class="arrow right" style="float: right;">> </i>
+                </a>
+                <ul class="dropdown-menu sub-menu" style="top: 224px; background-color: #f5f5f5; background-color: #f5f5f5; left: 178px;">
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="About_Info" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Info</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="Skills_Description" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Skills Description</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Skills" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Skills</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Features" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Features</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Visions" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Our Vision</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Clients" asp-action="List" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Clients</span>
+                        </a>
+                    </li>
+                    @*<li>
+                            <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="Our_Offer" style="padding-right: 5px; padding-left: 5px;">
+                                <span class="hidden-tablet">Our Offer</span>
+                            </a>
+                        </li>*@
+                    @*<li>
+                            <a class="ajax-link" href="@Url.Action("AboutInfoPhoto", "Image", new { area = "Addmein" })"
+                               style="padding-right: 5px; padding-left: 5px;">
+                                <i class="icon icon-red icon-image"></i><span class="hidden-tablet">About Photo</span>
+                            </a>
+                        </li>*@
+                </ul>
+            </li>
+            <li>
+                <a class="trigger right-caret" data-toggle="dropdown" style="padding-right: 5px; padding-left: 5px; cursor: pointer;">
+                    <i class="icon icon-red icon-envelope-open"></i>
+                    Contact
+                    <i class="arrow right" style="float: right;">> </i>
+                </a>
+                <ul class="dropdown-menu sub-menu" style="top: 253px; background-color: #f5f5f5; background-color: #f5f5f5; left: 178px;">
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="Contact_Address" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Address</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="Contact_Phone" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Phone</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="Contact_Email" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Email</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="Contact_Info" style="padding-right: 5px; padding-left: 5px;">
+                            <span class="hidden-tablet">Info</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="ajax-link" asp-area="Addmein" asp-controller="Option" asp-action="ViewOption" asp-route-sec="Instructors_Info"
+                   style="padding-right: 5px; padding-left: 5px;">
+                    <i class="icon icon-red icon-info"></i><span class="hidden-tablet">Instructors info</span>
+                </a>
+            </li>
+            @if (ViewBag.Role == (int)EnumUserRole.Superadmin)
+            {
+                <li>
+                    <a class="ajax-link" href="@Url.Action("List", "Account", new { area = "Addmein" })"
+                       style="padding-right: 5px; padding-left: 5px;">
+                        <i class="icon icon-red icon-user"></i><span class="hidden-tablet">Users</span>
+                    </a>
+                </li>
+            }
+        </ul>
+        <label id="for-is-ajax" class="hidden-tablet" for="is-ajax" style="visibility: hidden; margin-bottom: 0px;">
+            <input id="is-ajax" type="checkbox" checked="checked" />
+        </label>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".dropdown-menu > li > a.trigger").on("click", function (e) {
+            var current = $(this).next();
+            var grandparent = $(this).parent().parent();
+            if ($(this).hasClass('left-caret') || $(this).hasClass('right-caret'))
+                $(this).toggleClass('right-caret left-caret');
+            grandparent.find('.left-caret').not(this).toggleClass('right-caret left-caret');
+            grandparent.find(".sub-menu:visible").not(current).hide();
+            current.toggle();
+            e.stopPropagation();
+        });
+        $(".dropdown-menu > li > a:not(.trigger)").on("click", function () {
+            var root = $(this).closest('.dropdown');
+            root.find('.left-caret').toggleClass('right-caret left-caret');
+            root.find('.sub-menu:visible').hide();
+        });
+    });
+</script>

@@ -1,0 +1,90 @@
+﻿@*@using Microsoft.AspNetCore.Identity
+    @inject SignInManager<IdentityUser> SignInManager
+    @inject UserManager<IdentityUser> UserManager*@
+
+<div id="top-box">
+    <div class="top-box-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-9 col-sm-5">
+                    <div class="btn-group language btn-select">
+                        <a class="btn dropdown-toggle btn-default" role="button" data-toggle="dropdown" href="#">
+                            <span class="hidden-xs">@Lang.LanguageText</span>
+                            <span class="visible-xs"></span>
+                            : @Lang.LanguageName
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en-US">
+                                    <img src="~/img/eng-flag.png" alt="">English
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="az-Latn-AZ">
+                                    <img src="~/img/az-flag.png" alt="">Azerbaijan
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    @*<div class="btn-group currency btn-select">
+                            <a class="btn dropdown-toggle btn-default" role="button" data-toggle="dropdown" href="#">
+                                <span class="hidden-xs">Currency</span><span class="visible-xs">Curr</span>
+                                : USD
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">USD</a></li>
+                                <li><a href="#">EUR</a></li>
+                                <li><a href="#">GBP</a></li>
+                            </ul>
+                        </div>*@
+                </div>
+
+                <div class="col-xs-3 col-sm-7">
+                    <div class="navbar navbar-inverse top-navbar top-navbar-right" role="navigation">
+                        <button type="button" class="navbar-toggle btn-navbar collapsed" data-toggle="collapse" data-target=".top-navbar .navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <nav class="collapse collapsing navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li><a asp-area="Addmein" asp-controller="Dashboard" asp-action="Index">Test addmein</a></li>
+
+                                @if (ViewBag.IsAuthorized != null && ViewBag.IsAuthorized)
+                                {
+                                    var user = (User)ViewBag.CurrentUser;
+
+                                    <li class="btn-group currency btn-select navbar-right" style="margin: 0px 0 0 0;">
+                                        <a href="#">
+                                            @ViewBag.Fullname
+                                            <i class="fa fa-lock after"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-controller="Profile" asp-action="Room" style="background-color:white;">My e-Room</a></li>
+                                            <li><a href="#" style="background-color:transparent !important;">My Purchases</a></li>
+                                            <li><a href="#" style="background-color:transparent !important;">Setting</a></li>
+                                            <li><a href="#" style="background-color:transparent !important;">Help Centre</a></li>
+                                            <li><a asp-controller="Account" asp-action="Logout" style="background-color:transparent !important;">Sign out</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("Start", "Account", new { })">@Lang.SigninText<i class="fa fa-lock after"></i></a></li>
+                                    <li><a href="@Url.Action("Start", "Account", new { act = "register" })">@Lang.SignUpText<i class="fa fa-user after"></i></a></li>
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

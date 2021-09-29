@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoryText" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="EmailText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailBodyFooterTitle1" xml:space="preserve">
+    <value>Connect with e-LearningHub</value>
+  </data>
+  <data name="EmailConfirmationMailBodyButton3" xml:space="preserve">
+    <value>Confirm Email</value>
+  </data>
+  <data name="EmailConfirmationMailBodyBye5" xml:space="preserve">
+    <value>Cheers</value>
+  </data>
+  <data name="EmailConfirmationMailBodyConfirmPart21" xml:space="preserve">
+    <value>Please take a second to confirm</value>
+  </data>
+  <data name="EmailConfirmationMailBodyConfirmPart22" xml:space="preserve">
+    <value>as your email address:</value>
+  </data>
+  <data name="EmailConfirmationMailBodyHi1" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="EmailConfirmationMailBodyIf4" xml:space="preserve">
+    <value>If you have trouble using the button above, you can click link below:</value>
+  </data>
+  <data name="EmailConfirmationMailBodyText7" xml:space="preserve">
+    <value>If you did not sign up or request for email confirmation, please ignore this email.</value>
+  </data>
+  <data name="EmailConfirmationMailSubject" xml:space="preserve">
+    <value>Action Required: Please confirm your email</value>
+  </data>
+  <data name="EmailRegisteredMailBodyButtonText7" xml:space="preserve">
+    <value>Let’s get started</value>
+  </data>
+  <data name="EmailRegisteredMailBodyHi1" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText1" xml:space="preserve">
+    <value>Congratulation! You have taken the most important step forward to enhance your career!</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText10" xml:space="preserve">
+    <value>Learner Help Centre</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText11" xml:space="preserve">
+    <value>You received this email because you registered for an account on e-LearningHub.</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText2" xml:space="preserve">
+    <value>Every single training on e-LearningHub is 100% online. We provide trainings and classes for you to learn, grow, and succeed. You will not spend your time in traffic to reach the classroom-based trainings, hence, we are here to serve you wherever suitable for you! Just lie back and enjoy online trainings at your cozy sofa!</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText3" xml:space="preserve">
+    <value>For You, From Us!</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText4" xml:space="preserve">
+    <value>Celebrate your registration with 10% discount!</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText5" xml:space="preserve">
+    <value>PROMO CODE:</value>
+  </data>
+  <data name="EmailRegisteredMailBodyText6" xml:space="preserve">
+    <value>Valid to</value>
+  </data>
+  <data name="EmailRegisteredMailSubject" xml:space="preserve">
+    <value>Welcome to e-LearningHub</value>
+  </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>Fatal error</value>
+  </data>
+  <data name="ForgotYourPassword" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="IAgreeTermsAndConditions" xml:space="preserve">
+    <value>I agree terms and conditions</value>
+  </data>
+  <data name="SigninSubmitButton" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="SigninText" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="ErrorUserNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="MenuContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="MenuHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="OrText" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="RegisteredPageContent" xml:space="preserve">
+    <value>The link for activating your account has been sent to your email address. Please go to your inbox to validate it for activation.</value>
+  </data>
+  <data name="RegisteredPageTitle" xml:space="preserve">
+    <value>Dear</value>
+  </data>
+  <data name="RegisterSubmitButton" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="RememberPassword" xml:space="preserve">
+    <value>Remember password</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Required field</value>
+  </data>
+  <data name="ResetPasswordMailBody6" xml:space="preserve">
+    <value>Cheers</value>
+  </data>
+  <data name="ResetPasswordMailBodyAccount3" xml:space="preserve">
+    <value>You've recently asked to reset the password for this e-LearningHub account</value>
+  </data>
+  <data name="ResetPasswordMailBodyButton5" xml:space="preserve">
+    <value>Reset my password</value>
+  </data>
+  <data name="ResetPasswordMailBodyForget1" xml:space="preserve">
+    <value>Don't worry, we all forget sometimes</value>
+  </data>
+  <data name="ResetPasswordMailBodyHi2" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="ResetPasswordMailBodyUpdate4" xml:space="preserve">
+    <value>To update your password, click the button below</value>
+  </data>
+  <data name="ResetPasswordMailSubject" xml:space="preserve">
+    <value>Password reset</value>
+  </data>
+  <data name="ResetPasswordMailTeam7" xml:space="preserve">
+    <value>e-LearningHub Team</value>
+  </data>
+  <data name="SignUpText" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="LearnerText" xml:space="preserve">
+    <value>Learner</value>
+  </data>
+  <data name="InstructorText" xml:space="preserve">
+    <value>Instructor</value>
+  </data>
+  <data name="ConfirmPasswordText" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="EmailBodyFooterTitle2" xml:space="preserve">
+    <value>Learner Help Centre</value>
+  </data>
+  <data name="ErrorIsIncorrectSymbolText" xml:space="preserve">
+    <value>symbols. </value>
+  </data>
+  <data name="ErrorIsIncorrectText" xml:space="preserve">
+    <value> is incorrect. </value>
+  </data>
+  <data name="ErrorMaximumLengthText" xml:space="preserve">
+    <value> maximum length: </value>
+  </data>
+  <data name="ErrorMinimumLengthText" xml:space="preserve">
+    <value>Minimum length: </value>
+  </data>
+  <data name="MobileText" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="NameText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PasswordText" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PositionText" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="SurnameText" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="WorkplaceText" xml:space="preserve">
+    <value>Workplace</value>
+  </data>
+  <data name="ErrorIsAgreeTerms" xml:space="preserve">
+    <value>Please accept Terms and Conditions to continue</value>
+  </data>
+  <data name="ErrorPasswordsNotSameText" xml:space="preserve">
+    <value>Passwords are not same</value>
+  </data>
+  <data name="ErrorRoleIsIncorrectText" xml:space="preserve">
+    <value>Role is incorrect</value>
+  </data>
+  <data name="ErrorUseOnlyText" xml:space="preserve">
+    <value>Use only:</value>
+  </data>
+  <data name="ErrorIsBusyText" xml:space="preserve">
+    <value> is busy</value>
+  </data>
+  <data name="EmailRegisteredMailDiscountText" xml:space="preserve">
+    <value>10% OFF at your first online training purchased</value>
+  </data>
+  <data name="EmailResetMailSubject" xml:space="preserve">
+    <value>Reset password now</value>
+  </data>
+  <data name="LanguageName" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LanguageText" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="ResetBackLoginText" xml:space="preserve">
+    <value>Back to sign in</value>
+  </data>
+  <data name="ResetPanelInfo" xml:space="preserve">
+    <value>Please enter your email address below. We’ll look for your account and send you a password reset email.</value>
+  </data>
+  <data name="ResetPanelTitle" xml:space="preserve">
+    <value>Reset your password</value>
+  </data>
+  <data name="ResetSubmitButton" xml:space="preserve">
+    <value>Send Password Reset</value>
+  </data>
+  <data name="SignInPanelTitle" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="SignUpPanelTitle" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="CinfirmSuccessMessagePart" xml:space="preserve">
+    <value>is verified. Thank you!</value>
+  </data>
+  <data name="ErrorOnMailSending" xml:space="preserve">
+    <value>Error on mail sending</value>
+  </data>
+  <data name="AboutUsText" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="AddressText" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ContactUsText" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="HelpAndSupportText" xml:space="preserve">
+    <value>Help &amp; Support</value>
+  </data>
+  <data name="HomeText" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="OurOfferText" xml:space="preserve">
+    <value>Our Offer</value>
+  </data>
+  <data name="OurTeamText" xml:space="preserve">
+    <value>Our team</value>
+  </data>
+  <data name="PhoneText" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="WorkWithUsText" xml:space="preserve">
+    <value>Work with us</value>
+  </data>
+  <data name="CurrentLanguage" xml:space="preserve">
+    <value>en</value>
+  </data>
+  <data name="OurSkillsText" xml:space="preserve">
+    <value>Our Skills</value>
+  </data>
+  <data name="CommentText" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="MailSentMessageSuccess" xml:space="preserve">
+    <value>Mail sent successfully</value>
+  </data>
+  <data name="QuickContactText" xml:space="preserve">
+    <value>Quick Contact</value>
+  </data>
+  <data name="SubmitText" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="OurVisionText" xml:space="preserve">
+    <value>Our Vision</value>
+  </data>
+  <data name="OurHappyClientsText" xml:space="preserve">
+    <value>Our Happy Clients</value>
+  </data>
+  <data name="EmailMailBodyHappy" xml:space="preserve">
+    <value>Happy e-Learning!</value>
+  </data>
+  <data name="EmailMailBodyTeam" xml:space="preserve">
+    <value>Your e-LearningHub Team</value>
+  </data>
+  <data name="EmailResetMailBodyButtonText" xml:space="preserve">
+    <value>Set new password</value>
+  </data>
+  <data name="EmailResetMailBodyHi" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="EmailResetMailBodyText" xml:space="preserve">
+    <value>We have received a request to reset your password for your e-LearningHub account.</value>
+  </data>
+  <data name="NewPasswordPanelTitle" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="PasswordChangedSuccessfullyText" xml:space="preserve">
+    <value>Password changed successfully</value>
+  </data>
+  <data name="ResetLinkSentPageInfoPart1" xml:space="preserve">
+    <value>We just sent a password reset email to</value>
+  </data>
+  <data name="ResetLinkSentPageInfoPart2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InfoText" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="MenuAccountInformation" xml:space="preserve">
+    <value>Account Information</value>
+  </data>
+  <data name="MenuChangePasswordText" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="MenuERoomText" xml:space="preserve">
+    <value>My e-Room</value>
+  </data>
+  <data name="MyAccountText" xml:space="preserve">
+    <value>My Account</value>
+  </data>
+  <data name="SaveButtonText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="InformationSavedSuccessfully" xml:space="preserve">
+    <value>Information saved successfully</value>
+  </data>
+  <data name="NewPasswordConfirmText" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="NewPasswordText" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="OldPasswordText" xml:space="preserve">
+    <value>Old password</value>
+  </data>
+  <data name="PasswordChangedSuccessfully" xml:space="preserve">
+    <value>Password changed successfully</value>
+  </data>
+  <data name="EmailResetMailBodyBye" xml:space="preserve">
+    <value>Regards,</value>
+  </data>
+  <data name="EmailResetMailBodyTechnicalTeam" xml:space="preserve">
+    <value>e-LearningHub Technical Support Team</value>
+  </data>
+  <data name="EmailResetMailBodyText2" xml:space="preserve">
+    <value>To reset your password, please click on the button below.</value>
+  </data>
+  <data name="EmailResetMailBodyText3" xml:space="preserve">
+    <value>Alternatively, you can copy and paste following link into your browser:</value>
+  </data>
+  <data name="EmailResetMailBodyText4" xml:space="preserve">
+    <value>Note: This link will expire in the next 24 hours and can be used only once.</value>
+  </data>
+  <data name="EmailResetMailBodyText5" xml:space="preserve">
+    <value>Wish you a good memory!</value>
+  </data>
+  <data name="ResetLinkSentPageInfoPart3" xml:space="preserve">
+    <value>When you receive the email, click on the button inside to reset your password.</value>
+  </data>
+  <data name="ResetLinkSentPageInfoPart4" xml:space="preserve">
+    <value>If you don’t see the email after a few minutes, check your spam folder.</value>
+  </data>
+  <data name="ErrorPasswordMinimumRequirment" xml:space="preserve">
+    <value>, use minimum one digit, one lowercase, one uppercase character and one symbol</value>
+  </data>
+  <data name="MeetOurInstructorsText" xml:space="preserve">
+    <value>Meet our Instructors</value>
+  </data>
+  <data name="OurInstructorsText" xml:space="preserve">
+    <value>Our Instructors</value>
+  </data>
+  <data name="UniversityText" xml:space="preserve">
+    <value>University</value>
+  </data>
+  <data name="InterestedCategoryText" xml:space="preserve">
+    <value>Interested category</value>
+  </data>
+  <data name="BecomeInstructorText" xml:space="preserve">
+    <value>Become Instructor</value>
+  </data>
+  <data name="PageNotFoundText" xml:space="preserve">
+    <value>The page cannot be found</value>
+  </data>
+  <data name="UploadCourseText" xml:space="preserve">
+    <value>Upload Course</value>
+  </data>
+  <data name="CourseCreateText" xml:space="preserve">
+    <value>Create Course</value>
+  </data>
+  <data name="CourseDescriptionText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="CourseNameText" xml:space="preserve">
+    <value>Course name</value>
+  </data>
+  <data name="WhatObjectivesText" xml:space="preserve">
+    <value>What are the course objectives?</value>
+  </data>
+  <data name="WhatSkills" xml:space="preserve">
+    <value>Skills</value>
+  </data>
+  <data name="WhoShouldTakeText" xml:space="preserve">
+    <value>Who should take this course?</value>
+  </data>
+  <data name="SubCategoryText" xml:space="preserve">
+    <value>Sub category</value>
+  </data>
+  <data name="WhatObjectives" xml:space="preserve">
+    <value>Course objectives</value>
+  </data>
+  <data name="WhatSkillsText" xml:space="preserve">
+    <value>What skills you will learn?</value>
+  </data>
+  <data name="WhoShouldTake" xml:space="preserve">
+    <value>"Who should take" field</value>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CourseAddVideoText" xml:space="preserve">
+    <value>Add video</value>
+  </data>
+  <data name="CourseApprovedStatusText" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="CourseDetailsTitleText" xml:space="preserve">
+    <value>Course details</value>
+  </data>
+  <data name="CourseDraftStatusText" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+  <data name="CourseEditTitleText" xml:space="preserve">
+    <value>Change course</value>
+  </data>
+  <data name="CourseSentStatusText" xml:space="preserve">
+    <value>Sent</value>
+  </data>
+  <data name="CourseViewText" xml:space="preserve">
+    <value>View course</value>
+  </data>
+  <data name="MyCoursesText" xml:space="preserve">
+    <value>My courses</value>
+  </data>
+  <data name="VideoFileText" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="VideoNameText" xml:space="preserve">
+    <value>Video name</value>
+  </data>
+  <data name="VideoUploadText" xml:space="preserve">
+    <value>Upload video</value>
+  </data>
+  <data name="CourseText" xml:space="preserve">
+    <value>Course</value>
+  </data>
+  <data name="VideoText" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="ErrorIsNotSelected" xml:space="preserve">
+    <value> is not selected.</value>
+  </data>
+  <data name="SendForApproval" xml:space="preserve">
+    <value>Send for approval</value>
+  </data>
+  <data name="EditText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="SectionAddVideoText" xml:space="preserve">
+    <value>Create section</value>
+  </data>
+  <data name="SectionSelectText" xml:space="preserve">
+    <value>Select section</value>
+  </data>
+  <data name="AddYourFirstSectionText" xml:space="preserve">
+    <value>Add your first section</value>
+  </data>
+  <data name="SectionCreateNewText" xml:space="preserve">
+    <value>New section name</value>
+  </data>
+  <data name="PriceText" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="FBLinkText" xml:space="preserve">
+    <value>FB link</value>
+  </data>
+  <data name="LinkedinLinkText" xml:space="preserve">
+    <value>Linkedin link</value>
+  </data>
+  <data name="TwitterLinkText" xml:space="preserve">
+    <value>Twitter link</value>
+  </data>
+</root>

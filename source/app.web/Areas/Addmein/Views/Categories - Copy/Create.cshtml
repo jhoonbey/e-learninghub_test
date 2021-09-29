@@ -1,0 +1,45 @@
+﻿@model  Category
+
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="icon icon-red icon-plus"></i>New Category</h2>
+        </div>
+        <div class="box-content">
+            @using (Html.BeginForm("Create", "Categories", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Name</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Name)
+                        </div>
+                    </div>
+                    @*    <div class="control-group">
+                              <label class="control-label" for="focusedInput">Name (EN)</label>
+                              <div class="controls">
+                                  @Html.TextBoxFor(model => model.NameEN)
+                              </div>
+                          </div>
+                        <div class="control-group">
+                              <label class="control-label" for="focusedInput">Name (TR)</label>
+                              <div class="controls">
+                                  @Html.TextBoxFor(model => model.NameTR)
+                              </div>
+                          </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">Name (RU)</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.NameRU)
+                                    </div>
+                                </div>*@
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" href="@Url.Action("List", "Categories")">Cancel</a>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>

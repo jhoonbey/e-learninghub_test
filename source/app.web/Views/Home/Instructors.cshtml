@@ -1,0 +1,84 @@
+﻿@model EntityCollection<User>
+<div class="breadcrumb-box">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a asp-controller="Home" asp-action="Index">@Lang.HomeText</a> </li>
+            <li class="active">@Lang.OurInstructorsText</li>
+        </ul>
+    </div>
+</div>
+<section id="main">
+    <header class="page-header">
+        <div class="container">
+            <h1 class="title">@Lang.OurInstructorsText</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <article class="content col-sm-12 col-md-12">
+                @if (ViewBag.Instructors_Info != null)
+                {
+                    @Html.Raw(((Option)ViewBag.Instructors_Info).GetName(Lang.CurrentLanguage))
+                }
+                <div class="clearfix"></div>
+                <div class="bottom-padding bottom-padding-min">
+                    <div class="title-box">
+                        <h2 class="title">@Lang.MeetOurInstructorsText</h2>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row text-center">
+                        @foreach (var item in Model.Items)
+                        {
+                            <div class="col-sm-3 col-md-3 employee rotation">
+                                <div class="default">
+                                    <div class="image">
+                                        @if (!string.IsNullOrEmpty(item.Imagename))
+                                        {
+                                            <img class="replace-2x" src="~/Files/Images/Profile/512/@item.Imagename" alt="" title="" width="270" height="270">
+                                        }
+                                        else
+                                        {
+                                            <img class="replace-2x" src="~/img/profile.png" alt="" title="" width="270" height="270">
+                                        }
+                                    </div>
+                                    <div class="description">
+                                        <div class="vertical">
+                                            <h3 class="name">@item.Name @item.Surname</h3>
+                                            <div class="role">@item.Position</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="employee-hover">
+                                    <h3 class="name">@item.Name @item.Surname</h3>
+                                    <div class="role">@item.Position</div>
+                                    <div class="image">
+                                        @if (!string.IsNullOrEmpty(item.Imagename))
+                                        {
+                                            <img class="replace-2x" src="~/Files/Images/Profile/512/@item.Imagename" alt="" title="" width="270" height="270">
+                                        }
+                                        else
+                                        {
+                                            <img class="replace-2x" src="~/img/profile.png" alt="" title="" width="270" height="270">
+                                        }
+                                    </div>
+                                    <div>
+                                        @*<p>Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>*@
+                                        <div class="contact"><b>@Lang.EmailText: </b>@item.Email</div>
+                                        <div class="contact"><b>@Lang.MobileText: </b>@item.Mobile</div>
+                                    </div>
+                                    @*<div class="social">
+                                            <a class="icon rounded" href="#"><span class="icon-facebook"><i class="fa fa-facebook"></i></span></a>
+                                            <a class="icon rounded" href="#"><span class="icon-twitter"><i class="fa fa-twitter"></i></span></a>
+                                            <a class="icon rounded" href="#"><span class="icon-google"><i class="fa fa-google"></i></span></a>
+                                            <a class="icon rounded" href="#"><span class="icon-linkedin"><i class="fa fa-linkedin"></i></span></a>
+                                        </div>*@
+                                </div>
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,137 @@
+﻿@model  Branch
+
+@*<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=en"></script>*@
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDIESmCq9IshHldpB8SHFuQIFkGp2qW4ao&sensor=false&language=en"></script>
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="icon icon-red icon-edit"></i>Edit Location</h2>
+        </div>
+        <div class="box-content">
+            @using (Html.BeginForm("Edit", "Branch", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Set location</label>
+                        <div class="controls">
+                            <div id="map_canvas" style="height: 350px; width: 100%; text-align: center;"></div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput"></label>
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.AddressByGoogle, new { @id = "addr", @style = "width: 80%;" })
+                            <br />
+                            @Html.TextBoxFor(model => model.Latitude, new { @id = "lat" })
+                            <br />
+                            @Html.TextBoxFor(model => model.Longitude, new { @id = "lng" })
+                        </div>
+                    </div>
+                    
+                    <br />
+                    <br />
+
+                    @*<div class="control-group">
+                        <label class="control-label" for="focusedInput">Name </label>
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.Name, new { @style = "width: 80%;" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Description</label>
+                        <div class="controls">
+                            @Html.TextAreaFor(model => model.Description, new { @class = "cleditor" })
+                        </div>
+                    </div>*@
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" href="@Url.Action("List", "Branch")">Cancel</a>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var geocoder;
+    var map;
+    var marker;
+
+    function initialize() {
+        //MAP
+        //40.395, 47.75  -- azerbaijan
+        //42.361145, -71.057083  --  boston usa
+        var latlng = new google.maps.LatLng(40.395, 47.75);
+        var options = {
+            zoom: 7,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            gestureHandling: 'greedy'
+        };
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+        //GEOCODER
+        geocoder = new google.maps.Geocoder();
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true
+        });
+
+
+        //extra start
+        var def_lat = "@( Model != null && !string.IsNullOrEmpty(Model.Latitude) ? Model.Latitude : "40.395")";
+        var def_lng = "@( Model != null && !string.IsNullOrEmpty(Model.Longitude) ? Model.Longitude : "47.75")";
+        var defaultLocation = new google.maps.LatLng(def_lat, def_lng);
+        marker.setPosition(defaultLocation);
+        //extra end
+
+
+        google.maps.event.addListener(marker, 'drag', function () {
+            geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        $('#addr').val(results[0].formatted_address);
+                        $('#lat').val(marker.getPosition().lat());
+                        $('#lng').val(marker.getPosition().lng());
+                    }
+                }
+            });
+        });
+    }
+
+    $(document).ready(function () {
+        initialize();
+
+        $(function () {
+            $("#addr").autocomplete({
+                //This bit uses the geocoder to fetch address values
+                source: function (request, response) {
+                    geocoder.geocode({ 'address': request.term }, function (results, status) {
+                        response($.map(results, function (item) {
+                            return {
+                                label: item.formatted_address,
+                                value: item.formatted_address,
+                                latitude: item.geometry.location.lat(),
+                                longitude: item.geometry.location.lng()
+                            }
+                        }));
+                    })
+                },
+                //This bit is executed upon selection of an address
+                select: function (event, ui) {
+                    $("#lat").val(ui.item.latitude);
+                    $("#lng").val(ui.item.longitude);
+                    var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
+                    marker.setPosition(location);
+                    map.setCenter(location);
+                }
+            });
+        });
+    });
+</script>
+
+
+

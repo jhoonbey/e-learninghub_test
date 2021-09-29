@@ -1,0 +1,38 @@
+﻿@model  Image
+
+@Html.Partial("~/Areas/Addmein/Views/Shared/_AlertPartialRedirect.cshtml")
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well">
+            <h2>
+                <i class="icon icon-red icon-plus"></i>@Model.Sector
+                (Use language name in file name, i.e.  AZ_Anyfilename.pdf, EN_filename.pdf, RU_filename.pdf)
+            </h2>
+        </div>
+        <div class="box-content">
+            @using (Html.BeginForm("CreateFile", "Image", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.Sector)
+
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">File</label>
+                        <div class="controls">
+                            <input type="file" name="postedFile" accept="application/pdf" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" onclick="goBack();">Cancel</a>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>

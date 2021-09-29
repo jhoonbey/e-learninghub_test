@@ -1,0 +1,51 @@
+﻿@model Vision
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="icon icon-red icon-edit"></i>Edit Vision</h2>
+        </div>
+        <div class="box-content">
+            <form asp-area="Addmein" asp-controller="Visions" asp-action="Edit" method="post" asp-antiforgery="true" class="form-horizontal" enctype="multipart/form-data">
+
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="IsDeleted" type="hidden" />
+                <input asp-for="CreateDate" type="hidden" />
+                <input asp-for="NameRU" type="hidden" />
+                <input asp-for="DescriptionRU" type="hidden" />
+
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Name (AZ)</label>
+                        <div class="controls">
+                            <input asp-for="NameAZ" type="text" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Details AZ</label>
+                        <div class="controls">
+                            <textarea asp-for="DescriptionAZ" type="text" class="ckeditor" style="height : 500px;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Name (EN)</label>
+                        <div class="controls">
+                            <input asp-for="NameEN" type="text" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Details (EN)</label>
+                        <div class="controls">
+                            <textarea asp-for="DescriptionEN" type="text" class="ckeditor" style="height : 500px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" asp-area="Addmein" asp-controller="Visions" asp-action="List">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

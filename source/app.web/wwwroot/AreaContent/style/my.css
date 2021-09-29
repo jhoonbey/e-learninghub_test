@@ -1,0 +1,14 @@
+/**************************** Calendar ****************************/
+body {
+    padding-bottom: 40px;
+}
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.myfooter {
+    bottom: 0;
+    position: absolute;
+    width: 97%;
+}

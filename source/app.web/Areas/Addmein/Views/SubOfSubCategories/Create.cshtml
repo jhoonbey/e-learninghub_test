@@ -1,0 +1,147 @@
+﻿@model SubOfSubCategory
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="icon icon-red icon-plus"></i>New Sub Of Sub Categories</h2>
+        </div>
+        <div class="box-content">
+            <form asp-area="Addmein" asp-controller="SubOfSubCategories" asp-action="Create" asp-antiforgery="true" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Category</label>
+                        <div class="controls">
+                            <select asp-for="CategoryId" asp-items="@ViewBag.Categories" style="margin-bottom: 0px;" data-rel="chosen">
+                                <option value="" selected>--- SELECT ---</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Sub Category</label>
+                        <div class="controls">
+                            <select asp-for="SubCategoryId" asp-items="@ViewBag.SubCategories" style="margin-bottom: 0px;" data-rel="chosen">
+                                <option value="" selected>--- SELECT ---</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Name (AZ)</label>
+                        <div class="controls">
+                            <input asp-for="NameAZ" type="text" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Name (EN)</label>
+                        <div class="controls">
+                            <input asp-for="NameEN" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn" asp-area="Addmein" asp-controller="SubOfSubCategories" asp-action="List">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function () {
+
+        var level1 = $("#CategoryId");
+        var level2 = $("#SubCategoryId");
+
+        $(level1).change(function ()
+        {
+            loadLevelTwo(this, $(level2), '@Url.Action("LoadSubCategoriesByCategoryId", "SubOfSubCategories")');
+        });
+
+        loadLevelTwo($(level1), $(level2), '@Url.Action("LoadSubCategoriesByCategoryId", "SubOfSubCategories")');
+
+        function loadLevelTwo(parent, child, urll) {
+            var selectedId = $(parent).val();
+
+            $.ajax(
+            {
+                url: urll,
+                type: "GET",
+                data: { parentId: selectedId },
+                error:
+                function (xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    alert(err.Message);
+                }
+            }).done(function (data) {
+                $(child).children().each(function (index, option) {
+                    $(option).remove();
+                });
+                var items = "<option selected value=\"\"></option>";
+                $.each(data,
+                    function (i, item) {
+                        items += "<option value=\"" + item.id + "\">" + item.nameEN + "</option>";
+                    });
+
+                //$(child).trigger("liszt:updated");
+                //$(parent).bind("change", function () {
+                //    $(child).trigger("liszt:updated")
+                //});
+
+
+                $(child).html(items);
+                $(child).trigger("liszt:updated");
+                $(child).trigger("chosen:updated");
+                $(child).trigger("change");
+                $(child).change();
+
+            });
+            }
+        });
+</script>
+
+
+
+@*<script>
+        jQuery(document).ready(function () {
+
+            level1.change(function ()
+            {
+                loadLevelTwo(level1, level2, '@Url.Action("LoadSubCategoriesByCategoryId", "SubCategories")');
+            });
+
+            loadLevelTwo(level1, level2, '@Url.Action("LoadSubCategoriesByCategoryId", "SubCategories")');
+
+            function loadLevelTwo(parent, child, urll) {
+                var selectedId = $(parent).val();
+
+                $.ajax(
+                {
+                    url: urll,
+                    type: "GET",
+                    data: { parentId: selectedId },
+                    error:
+                    function (xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")");
+                        alert(err.Message);
+                    }
+                }).done(function (data) {
+                    $(child).children().each(function (index, option) {
+                        $(option).remove();
+                    });
+                    var items = "<option selected value=\"\"></option>";
+                    $.each(data,
+                        function (i, item) {
+                            items += "<option value=\"" + item.id + "\">" + item.nameEN + "</option>";
+                        });
+
+
+                    $(child).html(items);
+                    $(child).trigger("chosen:updated");
+                    $(child).trigger("change");
+                    $(child).change();
+
+
+                });
+                }
+            });
+    </script>*@

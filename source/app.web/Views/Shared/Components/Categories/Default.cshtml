@@ -1,0 +1,74 @@
+﻿@model CategoryMenuViewModel
+
+@if (Model != null && Model.Categories != null)
+{
+    Model.Categories.Reverse();
+
+    <ul class="sub" style="width: 600px;">
+        <li class="sub-wrapper">
+            <div class="sub-list">
+                <div class="box closed">
+                    @*<h6 class="title">Savant Sound</h6>*@
+                    <ul>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li @if (Model.SubCategories.Any(c => c.CategoryId == category.Id)) { <text> class="parent" </text> } style="line-height: 30px;">
+                                @if (!string.IsNullOrEmpty(category.Imagename))
+                                {
+                                    <img src="~/Files/Images/Category/256/@category.Imagename" height="20" width="20"
+                                         style="position: absolute; margin-top: 3px;" alt="" />
+                                }
+
+                                <a href="#" style="margin-left: 26px;">@category.GetName(Lang.CurrentLanguage)</a>
+
+                                @if (Model.SubCategories != null && Model.SubCategories.Count > 0)
+                                {
+                                    <ul class="sub">
+                                        @foreach (var subCategory in Model.SubCategories.Where(c => c.CategoryId == category.Id))
+                                        {
+                                            <li @if (Model.SubOfSubCategories.Any(c => c.SubCategoryId == subCategory.Id)) { <text> class="parent" </text> }>
+                                                <a href="header1.html">@subCategory.GetName(Lang.CurrentLanguage)</a>
+                                                @if (Model.SubOfSubCategories != null && Model.SubOfSubCategories.Count > 0)
+                                                {
+                                                    <ul class="sub">
+                                                        @foreach (var subOfSubCategory in Model.SubOfSubCategories.Where(c => c.SubCategoryId == subCategory.Id))
+                                                        {
+                                                            <li>
+                                                                <a href="404.html">@subOfSubCategory.GetName(Lang.CurrentLanguage)</a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                        @*<li class="parent">
+                                <a href="404.html">perspiciatis    </a>
+                                <ul class="sub">
+                                    <li><a href="404.html">perspiciatis quaerat beatae </a></li>
+                                    <li class="parent">
+                                        <a href="404.html">perspiciatis quaerat beatae </a>
+                                        <ul class="sub">
+                                            <li><a href="404.html">perspiciatis quaerat beatae </a></li>
+                                            <li><a href="404-2.html">perspiciatis </a></li>
+                                            <li><a href="404-3.html">perspiciatis quaerat beatae </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="404-3.html">perspiciatis quaerat beatae </a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sitemap.html">perspiciatis quaerat beatae </a></li>*@
+                    </ul>
+                </div>
+            </div>
+            @*<div class="promo-block text-right">
+                    <a href="#">
+                        <img class="replace-2x" src="~/img/megamenu-big.jpg" width="253" height="457" alt="">
+                    </a>
+                </div>*@
+        </li>
+    </ul>
+}
